@@ -36,8 +36,12 @@ public class IndexAction extends ActionSupport {
 	public String school() throws Exception {
 		return SUCCESS;
 	}
-	@Action(value = "major", results = { @Result(name = "success", location = "/WEB-INF/views/major.jsp") })
+	@Action(value = "major",  results = { @Result(name = "success", location = "/WEB-INF/views/major.jsp") })
 	public String major() throws Exception {
+		return SUCCESS;
+	}
+	@Action(value = "createplan", results = { @Result(name = "success", location = "/WEB-INF/views/createplan.jsp") })
+	public String createPlan() throws Exception {
 		return SUCCESS;
 	}
 }

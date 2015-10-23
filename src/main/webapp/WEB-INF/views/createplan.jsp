@@ -60,7 +60,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="envor-desktop-breadscrubs-inner">
-                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>高校查询
+                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>创建方案
               </div>
             </div>
           </div>
@@ -70,51 +70,26 @@
       <section class="envor-section">
         <div class="container">
           <div class="row" style="margin-bottom: 30px">
-          		<div class="col-lg-3 col-md-3">
-              	<nav class="envor-side-navi">
-                <ul>
-                  <li class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-career.html">我的方案</a></li>
-                   <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-career.html">创建方案</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-404.html">我的申请</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-faq.html">个人信息</a></li>
-                </ul>
-              </nav>
-            </div>	
-            <div class="col-lg-9 col-md-9">
-            <h2 class="align-left" style="margin-top: 0px;">所有方案</h2>
-            <input  value="创建方案" class="pull-right envor-btn envor-btn-primary envor-btn-normal" onclick="" type="button">
-            <div > 
-            <table class="table table-bordered">
-			<thead>
-				<tr>
-					  <th>名称</th>
-						<th>年份</th>
-						<th>备注</th>
-						<th>查看推荐院校</th>
-				 </tr>
-			</thead>
-			<tbody>
-				<tr>
-					 	 <th>2015年高校推荐方案</th>
-						<th>2015</th>
-						<th>2015年高校推荐方案</th>
-						<th><a href="#">查看</a> </th>
-				 </tr>
-				 <tr>
-					 	 <th>2015年高校推荐方案</th>
-						<th>2015</th>
-						<th>2015年高校推荐方案</th>
-						<th><a href="#">查看</a> </th>
-				 </tr>
-				  <tr>
-					 	 <th>2015年高校推荐方案</th>
-						<th>2015</th>
-						<th>2015年高校推荐方案</th>
-						<th><a href="#">查看</a> </th>
-				 </tr>
-			</tbody>
-			</table>
-            </div>
+          		<div class="col-lg-12 col-md-12">
+              <h3 style="margin-top: 0px;">创建方案</h3>
+              <form class="envor-f1">
+                 <p><label for="drop-name">年份:*</label>
+                 	<select>
+                 	<option>2015</option>
+                 	</select>
+                 </p>
+                <p><label for="drop-email">您的分数:*</label><input type="text" id="drop-email" name="drop-email"></p>
+                <p><label for="drop-subject">您的排行:*</label><input type="text" id="drop-subject" name="drop-subject"></p>
+                <p><label for="drop-message">方案备注:</label>
+                  <textarea id="drop-message" placeholder="Your message..."></textarea>
+                </p>
+                <p><a href="#" class="envor-btn envor-btn-normal envor-btn-primary riva-prev-tab margin-left-0">提交</a></p>
+              </form>
+            <!--
+
+            Contact Form end
+
+            //-->
             </div>
 		  </div>
         </div>

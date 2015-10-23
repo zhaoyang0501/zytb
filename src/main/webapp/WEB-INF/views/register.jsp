@@ -14,7 +14,7 @@
     <meta name="author" content="Suono Libero ( @rivathemes.com )">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <title></title>
+    <title>Envor HTML5/CSS3 Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -52,6 +52,7 @@
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
+   
    	<%@include file="./header.jsp" %>
    
    <div class="envor-content" style="padding-top: 0px;">
@@ -70,59 +71,86 @@
       <section class="envor-section">
         <div class="container">
           <div class="row" style="margin-bottom: 30px">
-          		<div class="col-lg-3 col-md-3">
-              	<nav class="envor-side-navi">
-                <ul>
-                  <li class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-career.html">我的方案</a></li>
-                   <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-career.html">创建方案</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-404.html">我的申请</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-faq.html">个人信息</a></li>
-                </ul>
-              </nav>
-            </div>	
-            <div class="col-lg-9 col-md-9">
-            <h2 class="align-left" style="margin-top: 0px;">所有方案</h2>
-            <input  value="创建方案" class="pull-right envor-btn envor-btn-primary envor-btn-normal" onclick="" type="button">
-            <div > 
-            <table class="table table-bordered">
-			<thead>
-				<tr>
-					  <th>名称</th>
-						<th>年份</th>
-						<th>备注</th>
-						<th>查看推荐院校</th>
-				 </tr>
-			</thead>
-			<tbody>
-				<tr>
-					 	 <th>2015年高校推荐方案</th>
-						<th>2015</th>
-						<th>2015年高校推荐方案</th>
-						<th><a href="#">查看</a> </th>
-				 </tr>
-				 <tr>
-					 	 <th>2015年高校推荐方案</th>
-						<th>2015</th>
-						<th>2015年高校推荐方案</th>
-						<th><a href="#">查看</a> </th>
-				 </tr>
-				  <tr>
-					 	 <th>2015年高校推荐方案</th>
-						<th>2015</th>
-						<th>2015年高校推荐方案</th>
-						<th><a href="#">查看</a> </th>
-				 </tr>
-			</tbody>
-			</table>
+           <div class="col-lg-12 col-md-12">
+             
+
+              <div class="riva-toggle-tab" style="display: block;">
+                <h2><strong>用户注册</strong> </h2>
+                <form class="envor-f1">
+                  <p><label for="rt1-first-name">姓名*</label><input type="text" id="rt1-first-name"></p>
+                  <p><label for="rt1-last-name">身份证号码*</label><input type="text" id="rt1-last-name"></p>
+                  <p><label for="rt1-company">学号*</label><input type="text" id="rt1-company"></p>
+                  <p><label for="rt1-phone">用户名*</label><input type="text" id="rt1-phone"></p>
+                  <p><label for="rt1-email">电子邮箱*</label><input type="text" id="rt1-email"></p>
+                  <p><label for="rt1-mobile">性别</label> <select id="rt1-product-type">
+                      <option>男</option>
+                      <option>女</option>
+                    </select></p>
+                  <p><label for="rt1-fax">毕业学校</label><input type="text" id="rt1-fax"></p>
+                  <p><label for="rt1-website">出生日期</label><input type="text" id="rt1-website"></p>
+                  <p><label for="rt1-country">密码*</label><input type="text" id="rt1-country"></p>
+                  <p><label for="rt1-city">家庭住址*</label><input type="text" id="rt1-city"></p>
+                  
+                  <p><input type="submit" value="立即注册" class="envor-btn envor-btn-normal envor-btn-primary"></p>
+                </form>
+              </div>
+              <!--
+
+              Voice It Form tab
+
+              //-->
+              <div class="riva-toggle-tab" style="display: none;">
+                <h2><strong>Voice It</strong> Form</h2>
+                <form class="envor-f1">
+                  <p><label for="rt3-areyou">Are you?*</label>
+                    <select name="rt3-areyou" id="rt3-areyou">
+                      <option>A Business Partner of ENVOR</option>
+                      <option>Not a Business Partner of ENVOR</option>
+                    </select>
+                  </p>
+                  <p><label for="rt3-reg">Would you like to register a*</label>
+                    <select name="rt3-reg" id="rt3-reg">
+                      <option>Select</option>
+                      <option>Complaint</option>
+                      <option>Compliment</option>
+                      <option>Suggestion</option>
+                    </select>
+                  </p>
+                  <p><label for="rt3-company">Company*</label><input type="text" id="rt3-company"></p>
+                  <p><label for="rt3-first-name">Full name*</label><input type="text" id="rt3-first-name"></p>
+                  <p><label for="rt3-job-title">Job title*</label>
+                    <select name="rt3-job-title" id="rt3-job-title">
+                      <option>Select Position</option>
+                      <option>CEO</option>
+                      <option>Director</option>
+                      <option>Executive Officer</option>
+                      <option>Executive Director</option>
+                      <option>Manager</option>
+                      <option>Senior Manager</option>
+                      <option>Others</option>
+                    </select>
+                  </p>
+                  <p><label for="rt3-phone">Phone</label><input type="text" id="rt3-phone"></p>
+                  <p><label for="rt3-mobile">Mobile</label><input type="text" id="rt3-mobile"></p>
+                  <p><label for="rt3-email">Email Address*</label><input type="text" id="rt3-email"></p>
+                  <p><label for="rt3-details">Please provide us with a brief of your feedback*</label><textarea id="rt3-details"></textarea></p>
+                  <p><label for="rt3-attachment">Attachment*</label><input type="file" id="rt3-attachment"></p>
+                  <p><input type="submit" value="立即注册" class="envor-btn envor-btn-normal envor-btn-primary"></p>
+                </form>
+              </div>
+            <!--
+
+            Map & Form end
+
+            //-->
             </div>
-            </div>
-		  </div>
+			</div>
+			
         </div>
       </section>
     </div>
     
 	<%@include file="./footer.jsp" %>
-    <jsp:include page="./footer.jsp"></jsp:include>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

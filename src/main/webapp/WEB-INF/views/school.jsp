@@ -14,7 +14,7 @@
     <meta name="author" content="Suono Libero ( @rivathemes.com )">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <title></title>
+    <title>Envor HTML5/CSS3 Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -52,6 +52,7 @@
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
+   
    	<%@include file="./header.jsp" %>
    
    <div class="envor-content" style="padding-top: 0px;">
@@ -70,59 +71,52 @@
       <section class="envor-section">
         <div class="container">
           <div class="row" style="margin-bottom: 30px">
-          		<div class="col-lg-3 col-md-3">
-              	<nav class="envor-side-navi">
-                <ul>
-                  <li class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-career.html">我的方案</a></li>
-                   <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-career.html">创建方案</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-404.html">我的申请</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="pages-faq.html">个人信息</a></li>
-                </ul>
-              </nav>
-            </div>	
-            <div class="col-lg-9 col-md-9">
-            <h2 class="align-left" style="margin-top: 0px;">所有方案</h2>
-            <input  value="创建方案" class="pull-right envor-btn envor-btn-primary envor-btn-normal" onclick="" type="button">
-            <div > 
-            <table class="table table-bordered">
+           <div class="col-lg-4"></div>
+			  <div class="col-lg-4">
+			    <div class="input-group">
+			      <input type="text" class="form-control" placeholder="高校名称">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="button">查询</button>
+			      </span>
+			    </div>
+			  </div>
+			  <div class="col-lg-4"></div>
+			</div>
+			<table class="table table-bordered">
 			<thead>
 				<tr>
-					  <th>名称</th>
-						<th>年份</th>
-						<th>备注</th>
-						<th>查看推荐院校</th>
+					  <th>排行</th>
+						<th>学校名称</th>
+						<th>地区</th>
+						<th>类别</th>
 				 </tr>
 			</thead>
 			<tbody>
 				<tr>
-					 	 <th>2015年高校推荐方案</th>
-						<th>2015</th>
-						<th>2015年高校推荐方案</th>
-						<th><a href="#">查看</a> </th>
+					 	 <th>1</th>
+						<th><a href="#">北京大学</a> </th>
+						<th>北京</th>
+						<th>综合</th>
 				 </tr>
 				 <tr>
-					 	 <th>2015年高校推荐方案</th>
-						<th>2015</th>
-						<th>2015年高校推荐方案</th>
-						<th><a href="#">查看</a> </th>
+					 	 <th>2</th>
+						<th><a href="#">清华大学</a> </th>
+						<th>北京</th>
+						<th>综合</th>
 				 </tr>
 				  <tr>
-					 	 <th>2015年高校推荐方案</th>
-						<th>2015</th>
-						<th>2015年高校推荐方案</th>
-						<th><a href="#">查看</a> </th>
+					 	 <th>3</th>
+						<th><a href="#">负担</a> </th>
+						<th>北京</th>
+						<th>综合</th>
 				 </tr>
 			</tbody>
 			</table>
-            </div>
-            </div>
-		  </div>
         </div>
       </section>
     </div>
     
 	<%@include file="./footer.jsp" %>
-    <jsp:include page="./footer.jsp"></jsp:include>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
