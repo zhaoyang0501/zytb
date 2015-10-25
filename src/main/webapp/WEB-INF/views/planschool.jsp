@@ -82,29 +82,35 @@
               </nav>
             </div>	
             <div class="col-lg-9 col-md-9">
-            <h2 class="align-left" style="margin-top: 0px;">所有方案</h2>
-            <a  href="createplan" class="pull-right envor-btn envor-btn-primary envor-btn-normal" >创建方案</a>
+            <h2 class="align-left" style="margin-top: 0px;">推荐院校</h2>
             <div > 
             <table class="table table-bordered">
 			<thead>
 				<tr>
-					  <th>名称</th>
-						<th>年份</th>
-						<th>备注</th>
-						<th>删除</th>
-						<th>查看推荐院校</th>
+					  <th>大学名称</th>
+						<th>大学类型</th>
+						<th>所在地</th>
+						<th>大学排名</th>
+						<th>15年招生人数</th>
+						<th>14年招生人数</th>
+						<th>14年最低排名</th>
+						<th>选专业</th>
 				 </tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${plans}" var="bean">
+			
 				<tr>
-					 	 <th>${bean.name }</th>
-						<th>${bean.year }</th>
-						<th>${bean.remark }</th>
-						<th><a href="deleteplan?plan.id=${bean.id }">删除</a> </th>
-						<th><a href="plansugest?plan.id=${bean.id }">报考建议</a> </th>
+					 	 <th>北京大学</th>
+					 	 <th>综合</th>
+					 	 <th>北京</th>
+					 	  <th><span class="badge">4</span></th>
+					 	   <th><span class="badge">788</span></th>
+					 	     <th><span class="badge">900</span></th>
+					 	       <th><span class="badge">10000</span></th>
+						<th><a href="deleteplan?plan.id=${bean.id }">选专业</a> </th>
 				 </tr>
-			</c:forEach>
+				
+				 
 			</tbody>
 			</table>
             </div>

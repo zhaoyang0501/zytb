@@ -39,6 +39,10 @@ public class IndexAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	@Action(value = "plansugest", results = { @Result(name = "success", location = "/WEB-INF/views/plansugest.jsp") })
+	public String plansugest() throws Exception {
+		return SUCCESS;
+	}
 	@Action(value = "plan", results = { @Result(name = "success", location = "/WEB-INF/views/plan.jsp") })
 	public String plan() throws Exception {
 		User user=(User)ActionContext.getContext().getSession().get("user");

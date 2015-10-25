@@ -82,29 +82,38 @@
               </nav>
             </div>	
             <div class="col-lg-9 col-md-9">
-            <h2 class="align-left" style="margin-top: 0px;">所有方案</h2>
-            <a  href="createplan" class="pull-right envor-btn envor-btn-primary envor-btn-normal" >创建方案</a>
+            <h2 class="align-left" style="margin-top: 0px;">报考建议</h2>
             <div > 
             <table class="table table-bordered">
 			<thead>
 				<tr>
-					  <th>名称</th>
-						<th>年份</th>
-						<th>备注</th>
-						<th>删除</th>
+					  <th>批次</th>
+						<th>建议</th>
 						<th>查看推荐院校</th>
 				 </tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${plans}" var="bean">
+			
 				<tr>
-					 	 <th>${bean.name }</th>
-						<th>${bean.year }</th>
-						<th>${bean.remark }</th>
-						<th><a href="deleteplan?plan.id=${bean.id }">删除</a> </th>
-						<th><a href="plansugest?plan.id=${bean.id }">报考建议</a> </th>
+					 	 <th>本科第一批</th>
+						<th><span class="label label-default">根据您的排名，您没有必要考虑这个批次</span></th>
+						<th><a href="planschool?plan.id=${bean.id }">查看推荐院校</a> </th>
 				 </tr>
-			</c:forEach>
+				 <tr>
+					 	 <th>本科第二批</th>
+						<th><span class="label label-warning">根据您的排名，建议您选择该批次中竞争力比较弱的学校</span></th>
+						<th><a href="planschool?plan.id=${bean.id }">查看推荐院校</a> </th>
+				 </tr>
+				  <tr>
+					 	 <th>本科第三批</th>
+						<th><span class="label label-success">这个批次是你的成绩可以直接进入的批次，您可以直接报考，建议报考该批次中适合您发展的院校</span></th>
+						<th><a href="planschool?plan.id=${bean.id }">查看推荐院校</a> </th>
+				 </tr>
+				  <tr>
+					 	 <th>专科</th>
+						<th><span class="label label-default">根据您的排名，您应该进入上一个批次</span></th>
+						<th><a href="planschool?plan.id=${bean.id}">查看推荐院校</a> </th>
+				 </tr>
 			</tbody>
 			</table>
             </div>
