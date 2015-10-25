@@ -76,20 +76,26 @@
 
               <div class="riva-toggle-tab" style="display: block;">
                 <h2><strong>用户注册</strong> </h2>
-                <form class="envor-f1">
-                  <p><label for="rt1-first-name">姓名*</label><input type="text" id="rt1-first-name"></p>
-                  <p><label for="rt1-last-name">身份证号码*</label><input type="text" id="rt1-last-name"></p>
-                  <p><label for="rt1-company">学号*</label><input type="text" id="rt1-company"></p>
-                  <p><label for="rt1-phone">用户名*</label><input type="text" id="rt1-phone"></p>
-                  <p><label for="rt1-email">电子邮箱*</label><input type="text" id="rt1-email"></p>
-                  <p><label for="rt1-mobile">性别</label> <select id="rt1-product-type">
+                <form class="envor-f1" action="doregister" method="post">
+                  <p><label for="rt1-first-name">姓名*</label><input type="text" name='user.nickname'></p>
+                  <p><label for="rt1-last-name">身份证号码*</label><input type="text"  name='user.cardid'></p>
+                  <p><label for="rt1-phone">用户名*</label><input type="text"  name='user.name'></p>
+                  <p><label for="rt1-email">电子邮箱*</label><input type="text"  name='user.email'></p>
+                  <p><label for="rt1-mobile">性别</label> <select  name='user.sex'>
                       <option>男</option>
                       <option>女</option>
                     </select></p>
-                  <p><label for="rt1-fax">毕业学校</label><input type="text" id="rt1-fax"></p>
-                  <p><label for="rt1-website">出生日期</label><input type="text" id="rt1-website"></p>
-                  <p><label for="rt1-country">密码*</label><input type="text" id="rt1-country"></p>
-                  <p><label for="rt1-city">家庭住址*</label><input type="text" id="rt1-city"></p>
+                  <p><label for="rt1-fax">毕业学校</label><input type="text"  name='user.school'></p>
+                  <p><label for="rt1-country">密码*</label><input type="text"  name='user.password'></p>
+                  <p><label for="rt1-city">省份*</label> <select  name='user.area'>
+                      <option value="北京">北京</option>
+                      <option value="北京">上海</option>
+                        <option value="北京">江苏</option>
+                           <option value="北京">浙江</option>
+                    </select></p>
+                    <p><label for="rt1-city">城市*</label><input type="text"  name='user.city'></p>
+                
+                  <p><label for="rt1-city">家庭住址*</label><input type="text"  name='user.address'></p>
                   
                   <p><input type="submit" value="立即注册" class="envor-btn envor-btn-normal envor-btn-primary"></p>
                 </form>
@@ -255,15 +261,6 @@
           })
                   $('#envor-preload').hide();
       });
-      /*
-
-      Google Analytics Code
-
-      */
-      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
       /*
 
       Windows Phone 8 и Internet Explorer 10

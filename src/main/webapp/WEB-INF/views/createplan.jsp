@@ -70,20 +70,33 @@
       <section class="envor-section">
         <div class="container">
           <div class="row" style="margin-bottom: 30px">
-          		<div class="col-lg-12 col-md-12">
+           <div class="col-lg-3 col-md-3">
+              	<nav class="envor-side-navi">
+                <ul>
+                  <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="plan">我的方案</a></li>
+                   <li class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="createplan">创建方案</a></li>
+                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="apply">我的申请</a></li>
+                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="center">个人信息</a></li>
+                </ul>
+              </nav>
+            </div>	
+            
+          	<div class="col-lg-9 col-md-9">
               <h3 style="margin-top: 0px;">创建方案</h3>
-              <form class="envor-f1">
+              <form class="envor-f1" action="docreateplan" method="post">
+               <p><label for="drop-email">方案名称:*</label><input type="text" id="drop-email" name="plan.name"></p>
+              
                  <p><label for="drop-name">年份:*</label>
-                 	<select>
-                 	<option>2015</option>
+                 	<select name='plan.year'>
+                 	<option >2015</option>
                  	</select>
                  </p>
-                <p><label for="drop-email">您的分数:*</label><input type="text" id="drop-email" name="drop-email"></p>
-                <p><label for="drop-subject">您的排行:*</label><input type="text" id="drop-subject" name="drop-subject"></p>
+                <p><label for="drop-email">您的分数:*</label><input type="text" id="drop-email" name="plan.score"></p>
+                <p><label for="drop-subject">您的排行:*</label><input type="text" id="drop-subject" name="plan.num"></p>
                 <p><label for="drop-message">方案备注:</label>
-                  <textarea id="drop-message" placeholder="Your message..."></textarea>
+                  <textarea id="drop-message" placeholder="" name="plan.remark" ></textarea>
                 </p>
-                <p><a href="#" class="envor-btn envor-btn-normal envor-btn-primary riva-prev-tab margin-left-0">提交</a></p>
+                 <p><input type="submit" value="提交" class="envor-btn envor-btn-normal envor-btn-primary riva-prev-tab margin-left-0"></p>
               </form>
             <!--
 
@@ -204,15 +217,7 @@
       });
       /*
 
-      Google Analytics Code
-
-      */
-      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-      /*
-
+     
       Windows Phone 8 и Internet Explorer 10
 
       */

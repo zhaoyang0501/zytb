@@ -15,7 +15,7 @@
     <meta name="author" content="Suono Libero ( @rivathemes.com )">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <title></title>
+    <title>Envor HTML5/CSS3 Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -53,6 +53,7 @@
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
+   
    	<%@include file="./header.jsp" %>
    
    <div class="envor-content" style="padding-top: 0px;">
@@ -69,53 +70,40 @@
       </section>
       
       <section class="envor-section">
-        <div class="container">
-          <div class="row" style="margin-bottom: 30px">
-          		<div class="col-lg-3 col-md-3">
-              	<nav class="envor-side-navi">
-                <ul>
-                  <li class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="plan">我的方案</a></li>
-                   <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="createplan">创建方案</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="apply">我的申请</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="center">个人信息</a></li>
-                </ul>
-              </nav>
-            </div>	
-            <div class="col-lg-9 col-md-9">
-            <h2 class="align-left" style="margin-top: 0px;">所有方案</h2>
-            <a  href="createplan" class="pull-right envor-btn envor-btn-primary envor-btn-normal" >创建方案</a>
-            <div > 
-            <table class="table table-bordered">
-			<thead>
-				<tr>
-					  <th>名称</th>
-						<th>年份</th>
-						<th>备注</th>
-						<th>删除</th>
-						<th>查看推荐院校</th>
-				 </tr>
-			</thead>
-			<tbody>
-			<c:forEach items="${plans}" var="bean">
-				<tr>
-					 	 <th>${bean.name }</th>
-						<th>${bean.year }</th>
-						<th>${bean.remark }</th>
-						<th><a href="deleteplan?plan.id=${bean.id }">删除</a> </th>
-						<th><a href="viewplan?plan.id=${bean.id }">查看</a> </th>
-				 </tr>
-			</c:forEach>
-			</tbody>
-			</table>
-            </div>
-            </div>
-		  </div>
+     
+       <div class="container">
+      <c:if test="${tip!=null }">
+      <div class="envor-msg envor-msg-info">
+                <header>
+                	  提示!
+                  <i class="fa fa-times"></i>
+                </header>
+                <p>${tip }</p>
+          </div>
+      </c:if>
+        
+      <div class="row">  
+      <div class="col-lg-3"></div>      
+      <div class="col-lg-6">
+      	<div class="panel panel-default">
+			  <div class="panel-heading">登录</div>
+			  <div class="panel-body">
+			    <form class="form-vertical envor-f1" action="./dologin" method="post">
+			                  <p><label for="rt1-first-name">姓名*</label>  <input type="text"  name='user.name'></p>
+			                  <p><label for="rt1-first-name">姓名*</label> <input type="password" name='user.password'></p>
+			         
+			                  <button type="submit" class="btn btn-orange">登陆</button>
+			              </form>
+			  </div>
+			</div>
         </div>
+         <div class="col-lg-3"></div>     
+       </div>
+    </div>
       </section>
     </div>
     
 	<%@include file="./footer.jsp" %>
-    <jsp:include page="./footer.jsp"></jsp:include>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

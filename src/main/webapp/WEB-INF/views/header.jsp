@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
  <!--
 
     Scroll to the top
@@ -191,53 +193,14 @@
               //-->
               <p class="contacts"><i class="fa fa-phone"></i> 802-701-9763</p>
               <p class="contacts"><i class="fa fa-envelope"></i> <a href="">263608237@qq.com</a></p>
-              <!--
-
-              Contact information end
-
-              //-->
-              <!--
-
-              Shopping cart start
-
-              //-->
-              <div class="shopping-cart">
-                <span><i class="fa fa-shopping-cart"></i></span>
-                <div class="cart">
-                  <p class="title">shopping cart</p>
-                  <div class="cart-entry" id="topbarcart">
-                    <p><a href="">product title</a> x 2 <span class="price">$299.00</span></p>
-                    <p><a href="">product title</a> x 2 <span class="price">$299.00</span></p>
-                    <p><a href="">product title</a> x 2 <span class="price">$299.00</span></p>
-                    <p><a href="">product title</a> x 2 <span class="price">$299.00</span></p>
-                    <p><a href="">product title</a> x 2 <span class="price">$299.00</span></p>
-                    <p><a href="">product title</a> x 2 <span class="price">$299.00</span></p>
-                    <p><a href="">product title</a> x 2 <span class="price">$299.00</span></p>
-                  </div>
-                  <p class="cart-btns"><a href="" class="envor-btn envor-btn-small envor-btn-primary">view cart</a></p>
-                </div>
-              <!--
-
-              Shopping cart end
-
-              //-->
-              </div>
-              <!--
-
-              Social Buttons start
-
-              //-->
               <ul class="social-btns">
-                <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                <li><a href=""><i class="fa fa-rss"></i></a></li>
-              <!--
-
-              Social Buttons end
-
-              //-->
+                  <c:if test="${sessionScope.user!=null}">
+                    <li style=" width: 250px;"><a href="">欢迎您：${sessionScope.user.nickname }</a></li>
+               	 	<li><a href="loginout"><span class=" glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
+                  </c:if>
+                <c:if test="${sessionScope.user==null}">
+                    <li style=" width: 250px;"><a href="login">请登录</a></li>
+                  </c:if>
               </ul>
             </div>
           </div>
@@ -266,8 +229,7 @@
                 <a href="index.html">
                 <div class="envor-logo">
                   <img src="img/site-logo.png" alt="Envor Logo">
-                  <p class="logo">envor</p>
-                  <p class="tagline">Multipurpose HTML5/CSS3 Template</p>
+                  <p class="logo" style="width: 230px;">志愿填报</p>
                 <!--
 
                 Site Logo end
@@ -296,6 +258,9 @@
                     </li>
                     <li>
                       <a href="pages.html">高考周报</a>
+                    </li>
+                     <li>
+                      <a href="register">用户注册</a>
                     </li>
                   </ul>
                 <!--
