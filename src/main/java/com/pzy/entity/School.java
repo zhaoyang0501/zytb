@@ -64,7 +64,42 @@ public class School {
 	private String name;
 	@Column(columnDefinition="TEXT") 
 	private String context;
+	@Column(columnDefinition="TEXT") 
+	private String zsjh;
 	
+	@Column(columnDefinition="TEXT") 
+	private String zszc;
+	
+	/**大学实力*/
+	@Column(columnDefinition="TEXT") 
+	private String dxsl;
+	/**收费标准*/
+	@Column(columnDefinition="TEXT") 
+	private String sfbz;
+	public String getSfbz() {
+		return sfbz;
+	}
+	public void setSfbz(String sfbz) {
+		this.sfbz = sfbz;
+	}
+	public String getZsjh() {
+		return zsjh;
+	}
+	public void setZsjh(String zsjh) {
+		this.zsjh = zsjh;
+	}
+	public String getZszc() {
+		return zszc;
+	}
+	public void setZszc(String zszc) {
+		this.zszc = zszc;
+	}
+	public String getDxsl() {
+		return dxsl;
+	}
+	public void setDxsl(String dxsl) {
+		this.dxsl = dxsl;
+	}
 	private String type;
 	private String email;
 	private String addr;

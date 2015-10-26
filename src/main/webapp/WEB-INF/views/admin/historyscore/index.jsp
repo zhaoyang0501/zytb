@@ -86,6 +86,7 @@
 											<th >最高分排名</th>
 											<th >最低分排名</th>
 											<th >平均分排名</th>
+												<th >操作</th>
 										</tr>
 									</thead>
 									<tbody>

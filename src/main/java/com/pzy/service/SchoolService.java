@@ -26,9 +26,22 @@ import com.pzy.repository.SchoolRepository;
  */
 @Service
 public class SchoolService {
-     @Autowired
-     private SchoolRepository schoolRepository;
+    @Autowired
+    private SchoolRepository schoolRepository;
 
+    public  List<School> findByName(final String name){
+    	 Specification<School> spec = new Specification<School>() {
+             public Predicate toPredicate(Root<School> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+             Predicate predicate = cb.conjunction();
+             if (name != null) {
+                  predicate.getExpressions().add(cb.like(root.get("name").as(String.class), "%"+name+"%"));
+             }
+             return predicate;
+             }
+        };
+        return schoolRepository.findAll(spec);
+    }
+    
  	public List<School> findTop3() {
  		return schoolRepository.findAll(
  				new PageRequest(0, 15, new Sort(Direction.DESC, "createDate")))

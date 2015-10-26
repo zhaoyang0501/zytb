@@ -33,6 +33,7 @@
 							<li><a href="${pageContext.request.contextPath}/admin/school/create"><i class="icon-pencil"></i>添加高校信息</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/historyscore/index"><i class="icon-pencil"></i>高校历史招生信息管理</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/historymajor/index"><i class="icon-pencil"></i>高校招生专业管理</a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/scoreline/index"><i class="icon-pencil"></i>分数线设置</a></li>
 					
 				</ul>
 			</div>

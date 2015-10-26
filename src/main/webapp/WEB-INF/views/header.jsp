@@ -254,7 +254,7 @@
                       <a href="pages.html">专业查询</a>
                     </li>
                     <li>
-                      <a href="pages.html">高校查询</a>
+                      <a href="school">高校查询</a>
                     </li>
                     <li>
                       <a href="pages.html">高考周报</a>

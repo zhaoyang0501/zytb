@@ -57,9 +57,9 @@ jQuery.adminHistoryscore = {
 						});
 					},
 					"aoColumns" : [ {
-						"mDataProp" : "id"
-					} ,{
 						"mDataProp" : "school.name"
+					}, {
+						"mDataProp" : "year"
 					}, {
 						"mDataProp" : "area.name"
 					}, {
