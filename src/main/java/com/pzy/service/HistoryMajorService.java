@@ -65,7 +65,6 @@ public class HistoryMajorService {
 				if (school != null) {
 					predicate.getExpressions().add(cb.equal(root.get("school").get("id").as(Long.class), school));
 				}
-				
 				return predicate;
 			}
 		};
