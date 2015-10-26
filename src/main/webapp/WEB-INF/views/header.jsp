@@ -229,7 +229,7 @@
                 <a href="index.html">
                 <div class="envor-logo">
                   <img src="img/site-logo.png" alt="Envor Logo">
-                  <p class="logo" style="width: 230px;">志愿填报</p>
+                  <p class="logo" style="width: 230px;"></p>
                 <!--
 
                 Site Logo end

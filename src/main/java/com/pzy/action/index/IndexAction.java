@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.pzy.entity.HistoryScore;
 import com.pzy.entity.Plan;
 import com.pzy.entity.User;
+import com.pzy.service.HistoryScoreService;
 import com.pzy.service.PlanService;
 import com.pzy.service.UserService;
 
@@ -25,22 +27,20 @@ public class IndexAction extends ActionSupport {
 	private Plan plan;
 	
 	private List<Plan> plans;
+	private String tip;
+	private List<HistoryScore> historyScores;
+	private Integer  type;
 	@Autowired
 	private UserService userService;
 	@Autowired
 	private PlanService planService;
-	private String tip;
-	
+	@Autowired
+	private HistoryScoreService historyScoreService;
 	public String execute() throws Exception {
 		return SUCCESS;
 	}
 	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/index.jsp") })
 	public String index() throws Exception {
-		return SUCCESS;
-	}
-	
-	@Action(value = "plansugest", results = { @Result(name = "success", location = "/WEB-INF/views/plansugest.jsp") })
-	public String plansugest() throws Exception {
 		return SUCCESS;
 	}
 	@Action(value = "plan", results = { @Result(name = "success", location = "/WEB-INF/views/plan.jsp") })
@@ -57,10 +57,26 @@ public class IndexAction extends ActionSupport {
 	public String major() throws Exception {
 		return SUCCESS;
 	}
+	/**推荐学校*/
+	@Action(value = "planschool", results = { @Result(name = "success", location = "/WEB-INF/views/plansugest.jsp") })
+	public String planschool() throws Exception {
+		Plan newplan=planService.find(plan.getId());
+		Integer orderBegain=newplan.getNum()-1000;
+		Integer orderEnd=newplan.getNum()+1000;
+		historyScores=historyScoreService.findAll(type, orderBegain, orderEnd);
+		return SUCCESS;
+	}
+	/**报考建议*/
+	@Action(value = "plansugest", results = { @Result(name = "success", location = "/WEB-INF/views/plansugest.jsp") })
+	public String plansugest() throws Exception {
+		return SUCCESS;
+	}
+	/**创建方案*/
 	@Action(value = "createplan", results = { @Result(name = "success", location = "/WEB-INF/views/createplan.jsp") })
 	public String createPlan() throws Exception {
 		return SUCCESS;
 	}
+	/**注册*/
 	@Action(value = "doregister", results = { @Result(name = "success", location = "/WEB-INF/views/login.jsp") })
 	public String doregister() throws Exception {
 		userService.save(user);
@@ -122,5 +138,17 @@ public class IndexAction extends ActionSupport {
 	}
 	public void setPlans(List<Plan> plans) {
 		this.plans = plans;
+	}
+	public List<HistoryScore> getHistoryScores() {
+		return historyScores;
+	}
+	public void setHistoryScores(List<HistoryScore> historyScores) {
+		this.historyScores = historyScores;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
 	}
 }

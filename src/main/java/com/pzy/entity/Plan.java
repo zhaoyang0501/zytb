@@ -19,8 +19,8 @@ public class Plan {
 	private String name;
 	@Column(columnDefinition="TEXT") 
 	private String remark;
-	private String score;
-	private String num;
+	private Double score;
+	private Integer num;
 	private String year;
 	@ManyToOne(fetch = FetchType.EAGER)	
 	private User user;
@@ -42,18 +42,7 @@ public class Plan {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public String getScore() {
-		return score;
-	}
-	public void setScore(String score) {
-		this.score = score;
-	}
-	public String getNum() {
-		return num;
-	}
-	public void setNum(String num) {
-		this.num = num;
-	}
+	
 	public String getYear() {
 		return year;
 	}
@@ -65,5 +54,17 @@ public class Plan {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public Double getScore() {
+		return score;
+	}
+	public void setScore(Double score) {
+		this.score = score;
+	}
+	public Integer getNum() {
+		return num;
+	}
+	public void setNum(Integer num) {
+		this.num = num;
 	}
 }
