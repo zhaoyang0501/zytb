@@ -19,8 +19,11 @@ public class HistoryMajor {
 	
 	@ManyToOne(fetch = FetchType.EAGER)	
 	private Category category;
-	
+	@ManyToOne(fetch = FetchType.EAGER)	
+	private Area area;
 	private String year;
+	/**本科批次*/
+	private Integer type;
 	private Integer totalMan;
 	private Double maxScore;
 	private Double minScore;
@@ -28,7 +31,12 @@ public class HistoryMajor {
 	private Integer maxOrder;
 	private Integer minOrder;
 	private Integer avgOrder;
-	
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -88,5 +96,17 @@ public class HistoryMajor {
 	}
 	public void setAvgOrder(Integer avgOrder) {
 		this.avgOrder = avgOrder;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public Area getArea() {
+		return area;
+	}
+	public void setArea(Area area) {
+		this.area = area;
 	}
 }
