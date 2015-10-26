@@ -73,12 +73,14 @@
           <div class="row" style="margin-bottom: 30px">
            <div class="col-lg-4"></div>
 			  <div class="col-lg-4">
+			  <form action="school"  method="post">
 			    <div class="input-group">
-			      <input type="text" class="form-control" placeholder="高校名称">
+			      <input type="text" name='key' class="form-control" placeholder="高校名称">
 			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="button">查询</button>
+			        <button class="btn btn-default" type="submit">查询</button>
 			      </span>
 			    </div>
+			     </form>
 			  </div>
 			  <div class="col-lg-4"></div>
 			</div>
@@ -87,29 +89,24 @@
 				<tr>
 					  <th>排行</th>
 						<th>学校名称</th>
-						<th>地区</th>
+						<th>地址</th>
 						<th>类别</th>
+						<th>招生电话</th>
+						<th>招生网站</th>
 				 </tr>
 			</thead>
 			<tbody>
+			<c:forEach items="${schools }" var="bean">
 				<tr>
 					 	 <th>1</th>
-						<th><a href="#">北京大学</a> </th>
-						<th>北京</th>
-						<th>综合</th>
+						<th><a href="viewschool?school.id=${bean.id }">${bean.name }</a> </th>
+						<th>${bean.addr }</th>
+						<th>${bean.type }</th>
+						<th>${bean.tel }</th>
+						<th> <a href="${bean.site }">${bean.site }</a> </th>
 				 </tr>
-				 <tr>
-					 	 <th>2</th>
-						<th><a href="#">清华大学</a> </th>
-						<th>北京</th>
-						<th>综合</th>
-				 </tr>
-				  <tr>
-					 	 <th>3</th>
-						<th><a href="#">负担</a> </th>
-						<th>北京</th>
-						<th>综合</th>
-				 </tr>
+			</c:forEach>
+				
 			</tbody>
 			</table>
         </div>

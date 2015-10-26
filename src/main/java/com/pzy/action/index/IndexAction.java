@@ -12,9 +12,11 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.pzy.entity.HistoryScore;
 import com.pzy.entity.Plan;
+import com.pzy.entity.School;
 import com.pzy.entity.User;
 import com.pzy.service.HistoryScoreService;
 import com.pzy.service.PlanService;
+import com.pzy.service.SchoolService;
 import com.pzy.service.UserService;
 
 @SuppressWarnings("serial")
@@ -28,7 +30,11 @@ public class IndexAction extends ActionSupport {
 	
 	private List<Plan> plans;
 	private String tip;
+	private String key;
 	private List<HistoryScore> historyScores;
+	private School school;
+	private List<School> schools;
+	
 	private Integer  type;
 	@Autowired
 	private UserService userService;
@@ -36,6 +42,8 @@ public class IndexAction extends ActionSupport {
 	private PlanService planService;
 	@Autowired
 	private HistoryScoreService historyScoreService;
+	@Autowired
+	private SchoolService schoolService;
 	public String execute() throws Exception {
 		return SUCCESS;
 	}
@@ -51,7 +59,19 @@ public class IndexAction extends ActionSupport {
 	}
 	@Action(value = "school", results = { @Result(name = "success", location = "/WEB-INF/views/school.jsp") })
 	public String school() throws Exception {
+		schools=this.schoolService.findByName(key);
 		return SUCCESS;
+	}
+	@Action(value = "viewschool", results = { @Result(name = "success", location = "/WEB-INF/views/viewschool.jsp") })
+	public String viewschool() throws Exception {
+		school=schoolService.find(school.getId());
+		return SUCCESS;
+	}
+	public List<School> getSchools() {
+		return schools;
+	}
+	public void setSchools(List<School> schools) {
+		this.schools = schools;
 	}
 	@Action(value = "major",  results = { @Result(name = "success", location = "/WEB-INF/views/major.jsp") })
 	public String major() throws Exception {
@@ -150,5 +170,18 @@ public class IndexAction extends ActionSupport {
 	}
 	public void setType(Integer type) {
 		this.type = type;
+	}
+	public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public School getSchool() {
+		return school;
+	}
+	public void setSchool(School school) {
+		this.school = school;
 	}
 }

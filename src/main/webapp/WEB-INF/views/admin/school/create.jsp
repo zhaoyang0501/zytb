@@ -15,6 +15,9 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		 var ue = UE.getEditor('context');
+		 var ue1 = UE.getEditor('zszc');
+		 var ue2 = UE.getEditor('zsjh');
+		 var ue33 = UE.getEditor('sfbz');
 		if("${tip}" != null && "${tip}" != ""){
 			noty({"text":"${tip}","layout":"top","type":"success","timeout":"2000"});
 		}
@@ -98,9 +101,27 @@
 							</div>
 							
 							<div class="control-group">
-								<label for="title" class="control-label">内容：</label>
+								<label for="title" class="control-label">学校信息：</label>
 								<div class="controls">
 									<textarea  id='context' name='school.context' style="width: 100%;height: 400px"></textarea>
+								</div>
+							</div>
+							<div class="control-group">
+								<label for="title" class="control-label">招生计划：</label>
+								<div class="controls">
+									<textarea  id='zsjh' name='school.zsjh' style="width: 100%;height: 400px"></textarea>
+								</div>
+							</div>
+							<div class="control-group">
+								<label for="title" class="control-label">招生章程：</label>
+								<div class="controls">
+									<textarea  id='zszc' name='school.zszc' style="width: 100%;height: 400px"></textarea>
+								</div>
+							</div>
+							<div class="control-group">
+								<label for="title" class="control-label">收费标准：</label>
+								<div class="controls">
+									<textarea  id='sfbz' name='school.sfbz' style="width: 100%;height: 400px"></textarea>
 								</div>
 							</div>
 								<div class="modal-footer center" id="div_footer">
