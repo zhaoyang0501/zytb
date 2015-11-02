@@ -61,7 +61,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="envor-desktop-breadscrubs-inner">
-                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>高校查询
+                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>我的申请
               </div>
             </div>
           </div>
@@ -74,39 +74,33 @@
           		<div class="col-lg-3 col-md-3">
               	<nav class="envor-side-navi">
                 <ul>
-                  <li class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="plan">我的方案</a></li>
+                  <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="plan">我的方案</a></li>
                    <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="createplan">创建方案</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="apply">我的申请</a></li>
+                  <li class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="apply">我的申请</a></li>
                   <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="center">个人信息</a></li>
                 </ul>
               </nav>
             </div>	
             <div class="col-lg-9 col-md-9">
-            <h2 class="align-left" style="margin-top: 0px;">推荐专业</h2>
+            <h2 class="align-left" style="margin-top: 0px;">我的申请</h2>
             <div > 
             <table class="table table-bordered">
 			<thead>
 				<tr>
-					  <th>专业名称</th>
-						<th>大学名称</th>
+					  <th>大学</th>
+					   <th>专业</th>
 						<th>所在地</th>
-						<th>14年招生人数</th>
-						<th>14年生源排行范围</th>
-						<th>14年分数范围</th>
-						<th>加入申请</th>
+						<th>申请日期</th>
 				 </tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${historMajors}" var="bean" >
+			<c:forEach items="${ myplans}" var="bean" >
 			
 				<tr>
-					 	 <th>${bean.category.name }</th>
-					 	 <th>${bean.school.name }</th>
+					 	 <th><a href="viewschool?school.id= ${bean.school.id }">${bean.school.name }</a> </th>
+					 	 	 <th><a href="viewcategory?category.id= ${bean.category.id }">${bean.category.name }</a> </th>
 					 	 <th>${bean.school.addr }</th>
-					 	  <th><span class="badge">${bean.totalMan}</span></th>
-					 	  <th><span class="badge">${bean.minOrder} -${bean.maxOrder}</span></th>
-					 	 <th><span class="badge">${bean.minScore}-${bean.maxScore}</span></th>
-						<th><a href="addmyplan?myplan.school.id=${bean.school.id }&myplan.category.id=${bean.category.id }">加入申请</a> </th>
+					 	  <th><span class="badge">${bean.createDate}</span></th>
 				 </tr>
 				</c:forEach>
 				 

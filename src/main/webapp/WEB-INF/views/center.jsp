@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -61,7 +60,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="envor-desktop-breadscrubs-inner">
-                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>高校查询
+                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>创建方案
               </div>
             </div>
           </div>
@@ -71,48 +70,34 @@
       <section class="envor-section">
         <div class="container">
           <div class="row" style="margin-bottom: 30px">
-          		<div class="col-lg-3 col-md-3">
+           <div class="col-lg-3 col-md-3">
               	<nav class="envor-side-navi">
                 <ul>
-                  <li class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="plan">我的方案</a></li>
-                   <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="createplan">创建方案</a></li>
+                  <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="plan">我的方案</a></li>
+                   <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="createplan">创建方案</a></li>
                   <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="apply">我的申请</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="center">个人信息</a></li>
+                  <li  class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="center">个人信息</a></li>
                 </ul>
               </nav>
             </div>	
-            <div class="col-lg-9 col-md-9">
-            <h2 class="align-left" style="margin-top: 0px;">推荐专业</h2>
-            <div > 
-            <table class="table table-bordered">
-			<thead>
-				<tr>
-					  <th>专业名称</th>
-						<th>大学名称</th>
-						<th>所在地</th>
-						<th>14年招生人数</th>
-						<th>14年生源排行范围</th>
-						<th>14年分数范围</th>
-						<th>加入申请</th>
-				 </tr>
-			</thead>
-			<tbody>
-			<c:forEach items="${historMajors}" var="bean" >
-			
-				<tr>
-					 	 <th>${bean.category.name }</th>
-					 	 <th>${bean.school.name }</th>
-					 	 <th>${bean.school.addr }</th>
-					 	  <th><span class="badge">${bean.totalMan}</span></th>
-					 	  <th><span class="badge">${bean.minOrder} -${bean.maxOrder}</span></th>
-					 	 <th><span class="badge">${bean.minScore}-${bean.maxScore}</span></th>
-						<th><a href="addmyplan?myplan.school.id=${bean.school.id }&myplan.category.id=${bean.category.id }">加入申请</a> </th>
-				 </tr>
-				</c:forEach>
-				 
-			</tbody>
-			</table>
-            </div>
+            
+          	<div class="col-lg-9 col-md-9">
+              <h3 style="margin-top: 0px;">我的档案</h3>
+              <form class="envor-f1" action="docreateplan" method="post">
+               <p><label for="drop-email">姓名:</label>${sessionScope.user.nickname }</p>
+               <p><label for="drop-name">身份证:</label>${sessionScope.user.cardid } </p>
+                <p><label for="drop-name">用户名:</label>${sessionScope.user.name } </p>
+                 <p><label for="drop-name">电子邮箱:</label>${sessionScope.user.email} </p>
+                    <p><label for="drop-name">毕业学校:</label>${sessionScope.user.school} </p>
+                        <p><label for="drop-name">省份:</label>${sessionScope.area.name}  </p>
+                     <p><label for="drop-name">城市:</label>${sessionScope.user.city}  </p>
+                      <p><label for="drop-name">家庭住址:</label>${sessionScope.user.address} </p>
+                </form>
+            <!--
+
+            Contact Form end
+
+            //-->
             </div>
 		  </div>
         </div>
@@ -227,6 +212,7 @@
       });
       /*
 
+     
       Windows Phone 8 и Internet Explorer 10
 
       */

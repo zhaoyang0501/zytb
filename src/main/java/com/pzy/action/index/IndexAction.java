@@ -1,5 +1,6 @@
 package com.pzy.action.index;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -13,6 +14,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.pzy.entity.Category;
 import com.pzy.entity.HistoryMajor;
 import com.pzy.entity.HistoryScore;
+import com.pzy.entity.Myplan;
 import com.pzy.entity.News;
 import com.pzy.entity.Plan;
 import com.pzy.entity.School;
@@ -20,6 +22,7 @@ import com.pzy.entity.User;
 import com.pzy.service.CategoryService;
 import com.pzy.service.HistoryMajorService;
 import com.pzy.service.HistoryScoreService;
+import com.pzy.service.MyplanService;
 import com.pzy.service.NewsService;
 import com.pzy.service.PlanService;
 import com.pzy.service.SchoolService;
@@ -44,6 +47,10 @@ public class IndexAction extends ActionSupport {
 	private List<Category> categorys;
 	
 	private List<HistoryMajor> historMajors;
+	
+	private List<Myplan> myplans;
+	
+	private Myplan myplan;
 	private News news;
 	private List<News> newss;
 	private Category category;
@@ -62,6 +69,8 @@ public class IndexAction extends ActionSupport {
 	private NewsService newsService;
 	@Autowired
 	private HistoryMajorService historyMajorService;
+	@Autowired
+	private MyplanService myplanService;
 	public List<Category> getCategorys() {
 		return categorys;
 	}
@@ -73,6 +82,16 @@ public class IndexAction extends ActionSupport {
 	}
 	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/index.jsp") })
 	public String index() throws Exception {
+		return SUCCESS;
+	}
+	@Action(value = "center", results = { @Result(name = "success", location = "/WEB-INF/views/center.jsp") })
+	public String center() throws Exception {
+		return SUCCESS;
+	}
+	@Action(value = "apply", results = { @Result(name = "success", location = "/WEB-INF/views/apply.jsp") })
+	public String apply() throws Exception {
+		User user=(User)ActionContext.getContext().getSession().get("user");
+		myplans=this.myplanService.findByUser(user);
 		return SUCCESS;
 	}
 	@Action(value = "plan", results = { @Result(name = "success", location = "/WEB-INF/views/plan.jsp") })
@@ -115,6 +134,14 @@ public class IndexAction extends ActionSupport {
 	@Action(value = "viewcategory", results = { @Result(name = "success", location = "/WEB-INF/views/viewcategory.jsp") })
 	public String viewcategory() throws Exception {
 		category=categoryService.find(category.getId());
+		return SUCCESS;
+	}
+	@Action(value = "addmyplan", results = { @Result(name = "success", location = "/WEB-INF/views/addmyplan.jsp") })
+	public String addmyplan() throws Exception {
+		User user=(User)ActionContext.getContext().getSession().get("user");
+		myplan.setUser(user);
+		myplan.setCreateDate(new Date(System.currentTimeMillis()));
+		this.myplanService.save(myplan);
 		return SUCCESS;
 	}
 	/**推荐学校*/
@@ -253,5 +280,17 @@ public class IndexAction extends ActionSupport {
 	}
 	public void setHistorMajors(List<HistoryMajor> historMajors) {
 		this.historMajors = historMajors;
+	}
+	public List<Myplan> getMyplans() {
+		return myplans;
+	}
+	public void setMyplans(List<Myplan> myplans) {
+		this.myplans = myplans;
+	}
+	public Myplan getMyplan() {
+		return myplan;
+	}
+	public void setMyplan(Myplan myplan) {
+		this.myplan = myplan;
 	}
 }
