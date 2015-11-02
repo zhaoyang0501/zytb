@@ -33,6 +33,18 @@ public class CategoryService {
     public List<Category> findCategorys() {
         return (List<Category>) categoryRepository.findAll();
     }
+    public List<Category> findAll(final String name){
+        Specification<Category> spec = new Specification<Category>() {
+             public Predicate toPredicate(Root<Category> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+             Predicate predicate = cb.conjunction();
+             if (name != null) {
+                  predicate.getExpressions().add(cb.like(root.get("name").as(String.class), name+"%"));
+             }
+             return predicate;
+             }
+        };
+        return categoryRepository.findAll(spec, new Sort(Direction.DESC, "id"));
+    	}
     
     public Page<Category> findAll(final int pageNumber, final int pageSize,final String name){
         PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize, new Sort(Direction.DESC, "id"));

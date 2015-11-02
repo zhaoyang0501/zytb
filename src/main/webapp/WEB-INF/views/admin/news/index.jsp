@@ -4,7 +4,7 @@
 <html lang="ch">
 <%@ include file="../common/meta.jsp"%>
 <head>
-<script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/ace/admin.category.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/ace/admin.news.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/falgun/bootbox.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.zh-CN.js"></script>
@@ -39,26 +39,24 @@
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>专业管理</h3>
+								<h3>高考周报管理</h3>
 							</div>
 							<div class="box well form-inline">
-								<span>专业：</span>
-								<input type="text" id="category_name" >
-								<a onclick="$.adminCategory.initSearchDataTable()"
+								<span>标题：</span>
+								<input type="text" id="_name" >
+								<a onclick="$.adminNews.initSearchDataTable()"
 									class="btn btn-info" data-loading-text="正在加载..."><i class="icon-search"></i>查询</a>
 							</div>
 							<div class="widget-container">
 								
-									<a class="btn btn-success" style="float: right; margin: 5px;" onclick="$.adminCategory.showaddModal()"><i class="icon-plus"></i> 新增</a>
 								<table class="responsive table table-striped table-bordered"
-									id="dt_category_view">
+									id="dt_table_view">
 									<thead>
 										<tr>
-											<th >专业代码</th>
-											<th >名称</th>
-											<th >门类</th>
-											<th >创建日期</th>
-											<th >操作</th>
+											<th >id</th>
+											<th >标题</th>
+											<th >正文</th>
+											<th >发布时间</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -74,39 +72,29 @@
 	</div>
 
 	<!-- 编辑新增弹出框 -->
-	<div class="modal hide fade" id="category_modal">
+	<div class="modal hide fade" id="_modal">
 		<div class="modal-header blue">
 			<button type="button" class="close" data-dismiss="modal">×</button>
-			<label id="category_modal_header_label"></label>
+			<label id="_modal_header_label"></label>
 		</div>
-		<div class="modal-body" style="min-height: 200px;">
+		<div class="modal-body" style="min-height: 400px;">
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="form-container grid-form form-background left-align form-horizontal">
 						<form action="" method="get" id=''>
-							<input type="hidden" id="categoryId" value="">
-							<div class="control-group">
-								<label for="name" class="control-label">专业名称：</label>
-								<div class="controls">
-									<input type="text" id="name" placeholder="">
-								</div>
-							</div>
+							<input type="hidden" id="id" value="">
 							
 							<div class="control-group">
-								<label for="name" class="control-label">门类：</label>
+								<label for="title" class="control-label">新闻标题：</label>
 								<div class="controls">
-									<select id='bigtype'>
-										<c:forEach items="${bigtypes}" var="bean">
-											<option value="${bean.id }">${bean.name }</option>
-										</c:forEach>
-									</select>
+									<input type="text" id="title" placeholder="">
 								</div>
 							</div>
-							
-							<div class="control-group" id='control_project'>
-								<label for="remark" class="control-label">专业描述：</label>
+							<div class="control-group" id='control_projectStep'>
+								<label for="context" class="control-label">新闻内容：</label>
 								<div class="controls">
-									<textarea id="remark" placeholder="" rows="9">
+									<textarea id='context' name=context rows="15" cols="">
+									
 									</textarea>
 								</div>
 							</div>
@@ -117,7 +105,7 @@
 		</div>
 		
 		<div class="modal-footer center" id="div_footer">
-			<a class="btn btn-primary" onclick="$.adminCategory.save()">保存</a>
+			<a class="btn btn-primary" onclick="$.adminNews.save()">保存</a>
 			<a href="#" class="btn" data-dismiss="modal" id="closeViewModal">关闭</a>
 		</div>
 	</div>

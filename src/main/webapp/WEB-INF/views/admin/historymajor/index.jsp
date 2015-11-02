@@ -39,7 +39,7 @@
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>分类管理</h3>
+								<h3>招生专业管理</h3>
 							</div>
 							<div class="box well form-inline">
 								<span>大学名称：</span>
@@ -77,6 +77,7 @@
 									<thead>
 										<tr>
 											<th >学校名称</th>
+											<th >专业</th>
 											<th >年份</th>
 											<th >地区</th>
 											<th >总招生人数</th>
@@ -86,6 +87,7 @@
 											<th >最高分排名</th>
 											<th >最低分排名</th>
 											<th >平均分排名</th>
+											<th >操作</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -122,6 +124,17 @@
 									</select>
 								</div>
 							</div>
+							<div class="control-group">
+								<label for="name" class="control-label">招生专业：</label>
+								<div class="controls">
+									<select id='categoryid'>
+										<c:forEach items="${categorys}" var="bean">
+											<option value="${bean.id}">${bean.name }</option>
+										</c:forEach>
+									</select>
+								</div>
+							</div>
+							
 							<div class="control-group">
 								<label for="name" class="control-label">招生地区：</label>
 								<div class="controls">

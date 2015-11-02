@@ -34,7 +34,9 @@
 					<li><a href="${pageContext.request.contextPath}/admin/historyscore/index"><i class="icon-pencil"></i>高校历史招生信息管理</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/historymajor/index"><i class="icon-pencil"></i>高校招生专业管理</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/scoreline/index"><i class="icon-pencil"></i>分数线设置</a></li>
-					
+					<li><a href="${pageContext.request.contextPath}/admin/news/index"><i class="icon-pencil"></i>高考周报管理</a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/news/create"><i class="icon-pencil"></i>高考周报创建</a></li>
+				
 				</ul>
 			</div>
 		</div>

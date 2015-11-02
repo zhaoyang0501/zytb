@@ -1,14 +1,17 @@
 package com.pzy.entity;
 
 import java.util.Date;
+
 /***
  * 分类
  *
  */
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "t_category")
@@ -20,7 +23,14 @@ public class Category {
 	private String name;
 	
 	private String remark;
-	
+	@ManyToOne(fetch = FetchType.EAGER)	
+	private  BigType bigType;
+	public BigType getBigType() {
+		return bigType;
+	}
+	public void setBigType(BigType bigType) {
+		this.bigType = bigType;
+	}
 	private Date createDate;
 	
 	public Long getId() {

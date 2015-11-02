@@ -245,19 +245,19 @@
                 <nav>
                   <ul>
                     <li>
-                      <a href="index">首页</a>
+                      <a href="plan">首页</a>
                     </li>
                     <li>
                       <a href="plan">志愿方案</a>
                     </li>
                     <li>
-                      <a href="pages.html">专业查询</a>
+                      <a href="category">专业查询</a>
                     </li>
                     <li>
                       <a href="school">高校查询</a>
                     </li>
                     <li>
-                      <a href="pages.html">高考周报</a>
+                      <a href="news">高考周报</a>
                     </li>
                      <li>
                       <a href="register">用户注册</a>

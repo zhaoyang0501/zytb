@@ -10,11 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.pzy.entity.Category;
+import com.pzy.entity.HistoryMajor;
 import com.pzy.entity.HistoryScore;
+import com.pzy.entity.News;
 import com.pzy.entity.Plan;
 import com.pzy.entity.School;
 import com.pzy.entity.User;
+import com.pzy.service.CategoryService;
+import com.pzy.service.HistoryMajorService;
 import com.pzy.service.HistoryScoreService;
+import com.pzy.service.NewsService;
 import com.pzy.service.PlanService;
 import com.pzy.service.SchoolService;
 import com.pzy.service.UserService;
@@ -35,6 +41,12 @@ public class IndexAction extends ActionSupport {
 	private School school;
 	private List<School> schools;
 	
+	private List<Category> categorys;
+	
+	private List<HistoryMajor> historMajors;
+	private News news;
+	private List<News> newss;
+	private Category category;
 	private Integer  type;
 	@Autowired
 	private UserService userService;
@@ -44,6 +56,18 @@ public class IndexAction extends ActionSupport {
 	private HistoryScoreService historyScoreService;
 	@Autowired
 	private SchoolService schoolService;
+	@Autowired
+	private CategoryService categoryService;
+	@Autowired
+	private NewsService newsService;
+	@Autowired
+	private HistoryMajorService historyMajorService;
+	public List<Category> getCategorys() {
+		return categorys;
+	}
+	public void setCategorys(List<Category> categorys) {
+		this.categorys = categorys;
+	}
 	public String execute() throws Exception {
 		return SUCCESS;
 	}
@@ -73,17 +97,39 @@ public class IndexAction extends ActionSupport {
 	public void setSchools(List<School> schools) {
 		this.schools = schools;
 	}
-	@Action(value = "major",  results = { @Result(name = "success", location = "/WEB-INF/views/major.jsp") })
-	public String major() throws Exception {
+	@Action(value = "news",  results = { @Result(name = "success", location = "/WEB-INF/views/news.jsp") })
+	public String news() throws Exception {
+		this.newss=this.newsService.findAll();
+		return SUCCESS;
+	}
+	@Action(value = "viewnews", results = { @Result(name = "success", location = "/WEB-INF/views/viewnews.jsp") })
+	public String viewnews() throws Exception {
+		news=newsService.find(news.getId());
+		return SUCCESS;
+	}
+	@Action(value = "category",  results = { @Result(name = "success", location = "/WEB-INF/views/category.jsp") })
+	public String category() throws Exception {
+		this.categorys=this.categoryService.findAll(key);
+		return SUCCESS;
+	}
+	@Action(value = "viewcategory", results = { @Result(name = "success", location = "/WEB-INF/views/viewcategory.jsp") })
+	public String viewcategory() throws Exception {
+		category=categoryService.find(category.getId());
 		return SUCCESS;
 	}
 	/**推荐学校*/
-	@Action(value = "planschool", results = { @Result(name = "success", location = "/WEB-INF/views/plansugest.jsp") })
+	@Action(value = "planschool", results = { @Result(name = "success", location = "/WEB-INF/views/planschool.jsp") })
 	public String planschool() throws Exception {
 		Plan newplan=planService.find(plan.getId());
 		Integer orderBegain=newplan.getNum()-1000;
 		Integer orderEnd=newplan.getNum()+1000;
 		historyScores=historyScoreService.findAll(type, orderBegain, orderEnd);
+		return SUCCESS;
+	}
+	/**推荐专业*/
+	@Action(value = "plancategory", results = { @Result(name = "success", location = "/WEB-INF/views/plancategory.jsp") })
+	public String plancategory() throws Exception {
+		historMajors=historyMajorService.findAll();
 		return SUCCESS;
 	}
 	/**报考建议*/
@@ -183,5 +229,29 @@ public class IndexAction extends ActionSupport {
 	}
 	public void setSchool(School school) {
 		this.school = school;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public News getNews() {
+		return news;
+	}
+	public void setNews(News news) {
+		this.news = news;
+	}
+	public List<News> getNewss() {
+		return newss;
+	}
+	public void setNewss(List<News> newss) {
+		this.newss = newss;
+	}
+	public List<HistoryMajor> getHistorMajors() {
+		return historMajors;
+	}
+	public void setHistorMajors(List<HistoryMajor> historMajors) {
+		this.historMajors = historMajors;
 	}
 }

@@ -1,9 +1,9 @@
-jQuery.adminCategory = {
-		categoryDataTable:null,
+jQuery.adminNews = {
+		newsDataTable:null,
 		toSave:false,
 		initSearchDataTable : function() {
-			if (this.categoryDataTable == null) {
-				this.categoryDataTable = $('#dt_category_view').dataTable({
+			if (this.newsDataTable == null) {
+				this.newsDataTable = $('#dt_table_view').dataTable({
 					"sDom" : "<'row-fluid'<'span6'l>r>t<'row-fluid'<'span6'i><'span6'p>>",
 					"sPaginationType" : "bootstrap",
 					"oLanguage" : {
@@ -27,12 +27,12 @@ jQuery.adminCategory = {
 					"sServerMethod" : "POST",
 					"bProcessing" : true,
 					"bSort" : false,
-					"sAjaxSource" : $.ace.getContextPath() + "/admin/category/list",
+					"sAjaxSource" : $.ace.getContextPath() + "/admin/news/list",
 					"fnDrawCallback" : function(oSettings) {
 						$('[rel="popover"],[data-rel="popover"]').popover();
 					},
 					"fnServerData" : function(sSource, aoData, fnCallback) {
-						var name = $("#category_name").val();
+						var name = $("#_name").val();
 						if (!!name) {
 							aoData.push({
 								"name" : "name",
@@ -51,10 +51,10 @@ jQuery.adminCategory = {
 					},
 					"aoColumns" : [ {
 						"mDataProp" : "id"
-					} ,{
-						"mDataProp" : "name"
 					},{
-						"mDataProp" : "bigType.name"
+						"mDataProp" : "title"
+					},{
+						"mDataProp" : "context"
 					}, {
 						"mDataProp" : "createDate"
 					}, {
@@ -62,10 +62,19 @@ jQuery.adminCategory = {
 					}],
 					"aoColumnDefs" : [
 						{
+							'aTargets' : [3],
+							'fnRender' : function(oObj, sVal) {
+								if(sVal.length>10)
+									return sVal.substring(0,10)+".....";
+								else 
+									return sVal;
+							}
+						},
+						{
 							'aTargets' : [4],
 							'fnRender' : function(oObj, sVal) {
-								return "<button class=\"btn2 btn-info\" onclick=\"$.adminCategory.showEdit("+oObj.aData.id+")\"><i class=\"icon-pencil\"></i>修改</button>"+
-								 "  <button class=\"btn2 btn-info\" onclick=\"$.adminCategory.deleteCategory("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
+								return ""+
+								 "  <button class=\"btn2 btn-info\" onclick=\"$.adminNews.deleteNews("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
 							}
 						},
 					 {
@@ -76,23 +85,23 @@ jQuery.adminCategory = {
 
 				});
 			} else {
-				var oSettings = this.categoryDataTable.fnSettings();
+				var oSettings = this.newsDataTable.fnSettings();
 				oSettings._iDisplayStart = 0;
-				this.categoryDataTable.fnDraw(oSettings);
+				this.newsDataTable.fnDraw(oSettings);
 			}
 
 		},
-		deleteCategory :function(id){
+		deleteNews :function(id){
 			bootbox.confirm( "是否确认删除？", function (result) {
 	            if(result){
 	            	$.ajax({
 	        			type : "get",
-	        			url : $.ace.getContextPath() + "/admin/category/delete?id="+id,
+	        			url : $.ace.getContextPath() + "/admin/news/delete?id="+id,
 	        			dataType : "json",
 	        			success : function(json) {
 	        				if(json.resultMap.state=='success'){
 	        					noty({"text":""+ json.resultMap.msg +"","layout":"top","type":"success","timeout":"2000"});
-	        					$.adminCategory.initSearchDataTable();
+	        					$.adminNews.initSearchDataTable();
 	        				}else{
 	        					noty({"text":""+ json.resultMap.msg +"","layout":"top","type":"warning"});
 	        				}
@@ -102,26 +111,25 @@ jQuery.adminCategory = {
 	        });
 		},
 		showaddModal: function(id){
-			$.adminCategory.toSave=true;
+			$.adminNews.toSave=true;
 			$("#user_modal_header_label").text("新增分类");
-			$("#category_modal").modal('show');
+			$("#_modal").modal('show');
 		},
-		save : function (){
-			if($.adminCategory.toSave){
+		save :function (){
+			if($.adminNews.toSave){
 				$.ajax({
 	    			type : "post",
-	    			url : $.ace.getContextPath() + "/admin/category/save",
+	    			url : $.ace.getContextPath() + "/admin/news/save",
 	    			data:{
-	    				"category.name":$("#name").val(),
-	    				"category.bigType.id":$("#bigtype").val(),
-	    				"category.remark":$("#remark").val()
+	    				"news.title":$("#title").val(),
+	    				"news.context":$("#context").val()
 	    			},
 	    			dataType : "json",
 	    			success : function(json) {
 	    				if(json.resultMap.state=='success'){
 	    					noty({"text":""+ json.resultMap.msg +"","layout":"top","type":"success","timeout":"2000"});
-	    					$.adminCategory.initSearchDataTable();
-	    					$("#category_modal").modal('hide');
+	    					$.adminNews.initSearchDataTable();
+	    					$("#_modal").modal('hide');
 	    				}else{
 	    					noty({"text":""+ json.resultMap.msg +"","layout":"top","type":"warning"});
 	    				}
@@ -130,20 +138,19 @@ jQuery.adminCategory = {
 			}else{
 				$.ajax({
 	    			type : "post",
-	    			url : $.ace.getContextPath() + "/admin/category/update",
+	    			url : $.ace.getContextPath() + "/admin/news/update",
 	    			data:{
-	    				"category.id":$("#categoryId").val(),
-	    				"category.name":$("#name").val(),
-	    				"category.bigType.id":$("#bigtype").val(),
-	    				"category.remark":$("#remark").val()
+	    				"news.id":$("#id").val(),
+	    				"news.title":$("#title").val(),
+	    				"news.context":$("#context").val()
 	    			},
 	    			dataType : "json",
 	    			success : function(json) {
 	    				if(json.resultMap.state=='success'){
 	    					$("#user_edit_modal").modal('hide');
 	    					noty({"text":""+ json.resultMap.msg +"","layout":"top","type":"success","timeout":"2000"});
-	    					$.adminCategory.initSearchDataTable();
-	    					$("#category_modal").modal('hide');
+	    					$.adminNews.initSearchDataTable();
+	    					$("#_modal").modal('hide');
 	    				}else{
 	    					noty({"text":""+ json.resultMap.msg +"","layout":"top","type":"warning"});
 	    				}
@@ -152,20 +159,18 @@ jQuery.adminCategory = {
 			}
 		},
 		showEdit: function (id){
-			$("#categoryId").val(id);
-			$.adminCategory.toSave=false;
+			$("#id").val(id);
+			$.adminNews.toSave=false;
 			$.ajax({
     			type : "get",
-    			url : $.ace.getContextPath() + "/admin/category/get?id="+id,
+    			url : $.ace.getContextPath() + "/admin/news/get?id="+id,
     			dataType : "json",
     			success : function(json) {
     				if(json.resultMap.state=='success'){
     					$("#user_modal_header_label").text("修改分类");
-    					$("#category_modal").modal('show');
-    					$("#name").val(json.resultMap.category.name);
-    					$("#pid").val(json.resultMap.category.id);
-    					$("#bigtype").val(json.resultMap.category.bigType.id);
-    					$("#remark").val(json.resultMap.category.remark);
+    					$("#_modal").modal('show');
+    					$("#title").val(json.resultMap.object.title);
+    					$("#context").val(json.resultMap.object.context);
     				}else{
     					noty({"text":""+ json.resultMap.msg +"","layout":"top","type":"warning"});
     				}

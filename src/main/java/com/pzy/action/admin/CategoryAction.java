@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.pzy.entity.BigType;
 import com.pzy.entity.Category;
+import com.pzy.service.BigTypeService;
 import com.pzy.service.CategoryService;
 
 /***
@@ -37,11 +39,15 @@ public class CategoryAction extends ActionSupport {
 	private Long id;
 	private Category category;
 	private List<Category> categorys;
+	private List<BigType> bigtypes;
 	@Autowired
 	private CategoryService categoryService;
-
+	@Autowired
+	private BigTypeService bigTypeService;
+	
 	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/admin/category/index.jsp") })
 	public String index() {
+		bigtypes=bigTypeService.findAll();
 		categorys = categoryService.findCategorys();
 		return SUCCESS;
 	}
@@ -90,6 +96,7 @@ public class CategoryAction extends ActionSupport {
 		Category bean = categoryService.find(category.getId());
 		bean.setName(category.getName());
 		bean.setRemark(category.getRemark());
+		bean.setBigType(category.getBigType());
 		categoryService.save(bean);
 		resultMap.put("state", "success");
 		resultMap.put("msg", "修改成功");
@@ -170,5 +177,12 @@ public class CategoryAction extends ActionSupport {
 
 	public void setCategorys(List<Category> categorys) {
 		this.categorys = categorys;
+	}
+	public List<BigType> getBigtypes() {
+		return bigtypes;
+	}
+
+	public void setBigtypes(List<BigType> bigtypes) {
+		this.bigtypes = bigtypes;
 	}
 }

@@ -14,9 +14,11 @@ import org.springframework.data.domain.Page;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.pzy.entity.Area;
+import com.pzy.entity.Category;
 import com.pzy.entity.HistoryMajor;
 import com.pzy.entity.School;
 import com.pzy.service.AreaService;
+import com.pzy.service.CategoryService;
 import com.pzy.service.HistoryMajorService;
 import com.pzy.service.SchoolService;
 
@@ -45,16 +47,19 @@ public class HistoryMajorAction extends ActionSupport {
 	private List<HistoryMajor> historymajors;
 	private List<School> schools;
 	private List<Area> areas;
+	private List<Category> categorys;
 	@Autowired
 	private SchoolService schoolService;
 	@Autowired
 	private AreaService areaService;
-	
+	@Autowired
+	private CategoryService cateogryService;
 	@Autowired
 	private HistoryMajorService historymajorService;
 
 	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/admin/historymajor/index.jsp") })
 	public String index() {
+		categorys=this.cateogryService.findAll();
 		schools=schoolService.findAll();
 		areas=areaService.findAll();
 		return SUCCESS;
@@ -113,6 +118,14 @@ public class HistoryMajorAction extends ActionSupport {
 	
 	
 	
+	public HistoryMajor getHistorymajor() {
+		return historymajor;
+	}
+
+	public void setHistorymajor(HistoryMajor historymajor) {
+		this.historymajor = historymajor;
+	}
+
 	/* ~~~~~~~~get and setter~~~~~~~~~ */
 	@JSON
 	public Map<String, Object> getResultMap() {
@@ -220,5 +233,12 @@ public class HistoryMajorAction extends ActionSupport {
 		this.id = id;
 	}
 
-	
+	public List<Category> getCategorys() {
+		return categorys;
+	}
+
+	public void setCategorys(List<Category> categorys) {
+		this.categorys = categorys;
+	}
+
 }

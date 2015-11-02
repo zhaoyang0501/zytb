@@ -16,6 +16,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.pzy.entity.HistoryMajor;
+import com.pzy.entity.School;
 import com.pzy.repository.HistoryMajorRepository;
 
 /***
@@ -27,11 +28,11 @@ import com.pzy.repository.HistoryMajorRepository;
 public class HistoryMajorService {
 	@Autowired
 	private HistoryMajorRepository historyMajorRepository;
-
-	public List<HistoryMajor> findTop3() {
-		return historyMajorRepository.findAll(
-				new PageRequest(0, 15, new Sort(Direction.DESC, "createDate")))
-				.getContent();
+	public List<HistoryMajor> findBySchool(School school) {
+		return historyMajorRepository.findBySchool(school);
+	}
+	public List<HistoryMajor> findAll() {
+		return (List<HistoryMajor>)historyMajorRepository.findAll();
 	}
 
 	public List<HistoryMajor> findAll(final Integer type,final Integer orderbegain,final Integer orderend) {

@@ -11,6 +11,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.util.StringUtils;
+
 import com.pzy.entity.User;
 
 /**
@@ -61,6 +63,6 @@ public class MailUtil {
 	        Transport.send(message);
 	  }
     public static void main(String[] args) throws MessagingException {
-      
+    	
     }
 }

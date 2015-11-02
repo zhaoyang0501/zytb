@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -15,7 +14,7 @@
     <meta name="author" content="Suono Libero ( @rivathemes.com )">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <title></title>
+    <title>Envor HTML5/CSS3 Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -53,6 +52,7 @@
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
+   
    	<%@include file="./header.jsp" %>
    
    <div class="envor-content" style="padding-top: 0px;">
@@ -61,7 +61,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="envor-desktop-breadscrubs-inner">
-                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>高校查询
+                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>专业查看
               </div>
             </div>
           </div>
@@ -71,56 +71,18 @@
       <section class="envor-section">
         <div class="container">
           <div class="row" style="margin-bottom: 30px">
-          		<div class="col-lg-3 col-md-3">
-              	<nav class="envor-side-navi">
-                <ul>
-                  <li class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="plan">我的方案</a></li>
-                   <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="createplan">创建方案</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="apply">我的申请</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="center">个人信息</a></li>
-                </ul>
-              </nav>
-            </div>	
-            <div class="col-lg-9 col-md-9">
-            <h2 class="align-left" style="margin-top: 0px;">推荐院校</h2>
-            <div > 
-            <table class="table table-bordered">
-			<thead>
-				<tr>
-					  <th>大学名称</th>
-						<th>大学类型</th>
-						<th>所在地</th>
-						<th>14年招生人数</th>
-						<th>14年生源排行范围</th>
-						<th>14年分数范围</th>
-						<th>选专业</th>
-				 </tr>
-			</thead>
-			<tbody>
-			<c:forEach items="${ historyScores}" var="bean" >
-			
-				<tr>
-					 	 <th>${bean.school.name }</th>
-					 	 <th>${bean.school.type }</th>
-					 	 <th>${bean.school.addr }</th>
-					 	  <th><span class="badge">${bean.totalMan}</span></th>
-					 	  <th><span class="badge">${bean.minOrder} -${bean.maxOrder}</span></th>
-					 	    <th><span class="badge">${bean.minScore}-${bean.maxScore}</span></th>
-						<th><a href="deleteplan?plan.id=${bean.id }">选专业</a> </th>
-				 </tr>
-				</c:forEach>
-				 
-			</tbody>
-			</table>
-            </div>
-            </div>
-		  </div>
+          <div class='col-lg-12'>
+          <h4><strong>专业名称：${category.name }</strong></h4>
+          <h4><strong>专业代码：${category.id }</strong></h4>
+           专业介绍: ${category.remark }
+           		 		
+          </div>
+          	
         </div>
       </section>
     </div>
     
 	<%@include file="./footer.jsp" %>
-    <jsp:include page="./footer.jsp"></jsp:include>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -147,6 +109,26 @@
     <script src="js/layerslider/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
     <script src="js/jquery.rivathemes.js"></script>
     <script type="text/javascript">
+    $('document').ready(function() {
+        /*
+
+        Sorting
+
+        */
+        $('#faq-sorting').rivaSorting({
+          showAll : 1
+        });
+        /*
+
+        Footer News Slider
+
+        */
+        $('#footer-news').rivaSlider({
+          visible : 1,
+          selector : 'envor-post-preview'
+        });
+    });
+
       $('document').ready(function() {
           /*
 

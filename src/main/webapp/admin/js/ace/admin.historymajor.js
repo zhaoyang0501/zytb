@@ -57,9 +57,11 @@ jQuery.adminHistorymajor = {
 						});
 					},
 					"aoColumns" : [ {
-						"mDataProp" : "id"
-					} ,{
 						"mDataProp" : "school.name"
+					},{
+						"mDataProp" : "category.name"
+					}, {
+						"mDataProp" : "year"
 					}, {
 						"mDataProp" : "area.name"
 					}, {
@@ -81,10 +83,9 @@ jQuery.adminHistorymajor = {
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [10],
+							'aTargets' : [11],
 							'fnRender' : function(oObj, sVal) {
-								return "<button class=\"btn2 btn-info\" onclick=\"$.adminHistorymajor.showEdit("+oObj.aData.id+")\"><i class=\"icon-pencil\"></i>修改</button>"+
-								 "  <button class=\"btn2 btn-info\" onclick=\"$.adminHistorymajor.deleteHistorymajor("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
+								return  "  <button class=\"btn2 btn-info\" onclick=\"$.adminHistorymajor.deleteHistorymajor("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
 							}
 						},
 					 {
@@ -133,7 +134,7 @@ jQuery.adminHistorymajor = {
 	    			data:{
 	    				"historymajor.school.id":$("#schoolid").val(),
 	    				"historymajor.area.code":$("#areaid").val(),
-	    				"historymajor.type":$("#type").val(),
+	    				"historymajor.category.id":$("#category").val(),
 	    				"historymajor.type":$("#type").val(),
 	    				"historymajor.year":$("#year").val(),
 	    				"historymajor.totalMan":$("#totalMan").val(),
@@ -161,8 +162,18 @@ jQuery.adminHistorymajor = {
 	    			url : $.ace.getContextPath() + "/admin/historymajor/update",
 	    			data:{
 	    				"historymajor.id":$("#historymajorId").val(),
-	    				"historymajor.name":$("#name").val(),
-	    				"historymajor.remark":$("#remark").val()
+	    				"historymajor.school.id":$("#schoolid").val(),
+	    				"historymajor.area.code":$("#areaid").val(),
+	    				"historymajor.category.id":$("#category").val(),
+	    				"historymajor.type":$("#type").val(),
+	    				"historymajor.year":$("#year").val(),
+	    				"historymajor.totalMan":$("#totalMan").val(),
+	    				"historymajor.maxScore":$("#maxScore").val(),
+	    				"historymajor.maxOrder":$("#maxOrder").val(),
+	    				"historymajor.minOrder":$("#minOrder").val(),
+	    				"historymajor.minScore":$("#minScore").val(),
+	    				"historymajor.avgScore":$("#avgScore").val(),
+	    				"historymajor.avgOrder":$("#avgOrder").val(),
 	    			},
 	    			dataType : "json",
 	    			success : function(json) {
