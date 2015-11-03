@@ -147,10 +147,10 @@
 								<label for="name" class="control-label">批次：</label>
 								<div class="controls">
 									<select id='type'>
-											<option value="10">本科一批</option>
-											<option value="20">本科二批</option>
-											<option value="30">本科三批</option>
-											<option value="30">专科</option>
+											<option value="1">本科一批</option>
+											<option value="2">本科二批</option>
+											<option value="3">本科三批</option>
+											<option value="4">专科</option>
 									</select>
 								</div>
 							</div>

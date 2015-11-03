@@ -16,6 +16,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.pzy.entity.Area;
 import com.pzy.entity.ScoreLine;
 import com.pzy.repository.ScoreLineRepository;
 
@@ -24,6 +25,12 @@ public class ScoreLineService {
 	
     @Autowired
     private ScoreLineRepository scoreLineRepository;
+    
+    public ScoreLine  findByAreaAndYear(Area area,String year){
+    	List<ScoreLine> list= scoreLineRepository.findByAreaAndYear(area, year);
+    	return list.size()==0?null:list.get(0);
+    }
+    
     public List<ScoreLine> findAll() {
          return (List<ScoreLine>) scoreLineRepository.findAll();
     }

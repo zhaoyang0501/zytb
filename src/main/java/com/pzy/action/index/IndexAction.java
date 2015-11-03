@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.pzy.entity.Area;
 import com.pzy.entity.Category;
 import com.pzy.entity.HistoryMajor;
 import com.pzy.entity.HistoryScore;
@@ -18,7 +19,9 @@ import com.pzy.entity.Myplan;
 import com.pzy.entity.News;
 import com.pzy.entity.Plan;
 import com.pzy.entity.School;
+import com.pzy.entity.ScoreLine;
 import com.pzy.entity.User;
+import com.pzy.service.AreaService;
 import com.pzy.service.CategoryService;
 import com.pzy.service.HistoryMajorService;
 import com.pzy.service.HistoryScoreService;
@@ -26,6 +29,7 @@ import com.pzy.service.MyplanService;
 import com.pzy.service.NewsService;
 import com.pzy.service.PlanService;
 import com.pzy.service.SchoolService;
+import com.pzy.service.ScoreLineService;
 import com.pzy.service.UserService;
 
 @SuppressWarnings("serial")
@@ -50,6 +54,8 @@ public class IndexAction extends ActionSupport {
 	
 	private List<Myplan> myplans;
 	
+	private List<Area> areas;
+	
 	private Myplan myplan;
 	private News news;
 	private List<News> newss;
@@ -71,6 +77,10 @@ public class IndexAction extends ActionSupport {
 	private HistoryMajorService historyMajorService;
 	@Autowired
 	private MyplanService myplanService;
+	@Autowired
+	private AreaService areaService;
+	@Autowired
+	private ScoreLineService scoreLineService;
 	public List<Category> getCategorys() {
 		return categorys;
 	}
@@ -80,62 +90,111 @@ public class IndexAction extends ActionSupport {
 	public String execute() throws Exception {
 		return SUCCESS;
 	}
+	/***
+	 * 首页
+	 * @return
+	 * @throws Exception
+	 */
 	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/index.jsp") })
 	public String index() throws Exception {
 		return SUCCESS;
 	}
+	/***
+	 * 个人信息
+	 * @return
+	 * @throws Exception
+	 */
 	@Action(value = "center", results = { @Result(name = "success", location = "/WEB-INF/views/center.jsp") })
 	public String center() throws Exception {
 		return SUCCESS;
 	}
+	/***
+	 * 我的申请
+	 * @return
+	 * @throws Exception
+	 */
 	@Action(value = "apply", results = { @Result(name = "success", location = "/WEB-INF/views/apply.jsp") })
 	public String apply() throws Exception {
 		User user=(User)ActionContext.getContext().getSession().get("user");
 		myplans=this.myplanService.findByUser(user);
 		return SUCCESS;
 	}
+	/***
+	 * 我的申请
+	 * @return
+	 * @throws Exception
+	 */
 	@Action(value = "plan", results = { @Result(name = "success", location = "/WEB-INF/views/plan.jsp") })
 	public String plan() throws Exception {
 		User user=(User)ActionContext.getContext().getSession().get("user");
 		 plans=planService.findByUser(user);
 		return SUCCESS;
 	}
+	/***
+	 * 学校查询
+	 * @return
+	 * @throws Exception
+	 */
 	@Action(value = "school", results = { @Result(name = "success", location = "/WEB-INF/views/school.jsp") })
 	public String school() throws Exception {
 		schools=this.schoolService.findByName(key);
 		return SUCCESS;
 	}
+	/***
+	 * 学校详细
+	 * @return
+	 * @throws Exception
+	 */
 	@Action(value = "viewschool", results = { @Result(name = "success", location = "/WEB-INF/views/viewschool.jsp") })
 	public String viewschool() throws Exception {
 		school=schoolService.find(school.getId());
 		return SUCCESS;
 	}
-	public List<School> getSchools() {
-		return schools;
-	}
-	public void setSchools(List<School> schools) {
-		this.schools = schools;
-	}
+	/***
+	 * 高考周报
+	 * @return
+	 * @throws Exception
+	 */
 	@Action(value = "news",  results = { @Result(name = "success", location = "/WEB-INF/views/news.jsp") })
 	public String news() throws Exception {
 		this.newss=this.newsService.findAll();
 		return SUCCESS;
 	}
+	/***
+	 * 周报查询
+	 * @return
+	 * @throws Exception
+	 */
 	@Action(value = "viewnews", results = { @Result(name = "success", location = "/WEB-INF/views/viewnews.jsp") })
 	public String viewnews() throws Exception {
 		news=newsService.find(news.getId());
 		return SUCCESS;
 	}
+	/***
+	 * 专业查询
+	 * @return
+	 * @throws Exception
+	 */
 	@Action(value = "category",  results = { @Result(name = "success", location = "/WEB-INF/views/category.jsp") })
 	public String category() throws Exception {
 		this.categorys=this.categoryService.findAll(key);
 		return SUCCESS;
 	}
+	/***
+	 * 专业详细
+	 * @return
+	 * @throws Exception
+	 */
 	@Action(value = "viewcategory", results = { @Result(name = "success", location = "/WEB-INF/views/viewcategory.jsp") })
 	public String viewcategory() throws Exception {
 		category=categoryService.find(category.getId());
 		return SUCCESS;
 	}
+	/***
+	 * 加入到我的自选
+	 * @return
+	 * @throws Exception
+	 */
 	@Action(value = "addmyplan", results = { @Result(name = "success", location = "/WEB-INF/views/addmyplan.jsp") })
 	public String addmyplan() throws Exception {
 		User user=(User)ActionContext.getContext().getSession().get("user");
@@ -156,12 +215,30 @@ public class IndexAction extends ActionSupport {
 	/**推荐专业*/
 	@Action(value = "plancategory", results = { @Result(name = "success", location = "/WEB-INF/views/plancategory.jsp") })
 	public String plancategory() throws Exception {
-		historMajors=historyMajorService.findAll();
+		historMajors=historyMajorService.findBySchoolAndType(school,type,"2014");
 		return SUCCESS;
 	}
 	/**报考建议*/
 	@Action(value = "plansugest", results = { @Result(name = "success", location = "/WEB-INF/views/plansugest.jsp") })
 	public String plansugest() throws Exception {
+		User user=(User)ActionContext.getContext().getSession().get("user");
+		Plan newplan=planService.find(plan.getId());
+		this.plan=newplan;
+		Area area=user.getArea();
+		ScoreLine scoreline=scoreLineService.findByAreaAndYear(area, "2014");
+		if(scoreline==null){
+			tip="系统暂时未录入分数线，或者您所在地区不受支持";
+			return SUCCESS;
+		}
+			
+		if(newplan.getNum()<scoreline.getNum1())
+			type=1;
+		if(newplan.getNum()<scoreline.getNum2())
+			type=2;
+		if(newplan.getNum()<scoreline.getNum3())
+			type=3;
+		if(newplan.getNum()<scoreline.getNum4())
+			type=4;
 		return SUCCESS;
 	}
 	/**创建方案*/
@@ -174,6 +251,11 @@ public class IndexAction extends ActionSupport {
 	public String doregister() throws Exception {
 		userService.save(user);
 		this.tip="注册成功请登录！";
+		return SUCCESS;
+	}
+	@Action(value = "register", results = { @Result(name = "success", location = "/WEB-INF/views/register.jsp") })
+	public String register() throws Exception {
+		areas=areaService.findAll();
 		return SUCCESS;
 	}
 	/***
@@ -197,8 +279,12 @@ public class IndexAction extends ActionSupport {
 	    	}
 	    	
 	}
-	 
-	 @Action(value = "docreateplan", results = { @Result(name = "success", location = "/WEB-INF/views/plan.jsp") })
+	 /***
+	  * 创建方案提交
+	  * @return
+	  * @throws Exception
+	  */
+	@Action(value = "docreateplan", results = { @Result(name = "success", location = "/WEB-INF/views/plan.jsp") })
 	public String docreateplan() throws Exception {
 		 User user=(User)ActionContext.getContext().getSession().get("user");
 		 plan.setUser(user);
@@ -292,5 +378,17 @@ public class IndexAction extends ActionSupport {
 	}
 	public void setMyplan(Myplan myplan) {
 		this.myplan = myplan;
+	}
+	public List<School> getSchools() {
+		return schools;
+	}
+	public void setSchools(List<School> schools) {
+		this.schools = schools;
+	}
+	public List<Area> getAreas() {
+		return areas;
+	}
+	public void setAreas(List<Area> areas) {
+		this.areas = areas;
 	}
 }

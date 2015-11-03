@@ -105,8 +105,8 @@
 					 	 <th>${bean.school.addr }</th>
 					 	  <th><span class="badge">${bean.totalMan}</span></th>
 					 	  <th><span class="badge">${bean.minOrder} -${bean.maxOrder}</span></th>
-					 	    <th><span class="badge">${bean.minScore}-${bean.maxScore}</span></th>
-						<th><a href="deleteplan?plan.id=${bean.id }">选专业</a> </th>
+					 	 <th><span class="badge">${bean.minScore}-${bean.maxScore}</span></th>
+						<th><a href="plancategory?school.id=${bean.school.id }&type=${type}">选专业</a> </th>
 				 </tr>
 				</c:forEach>
 				 

@@ -31,6 +31,9 @@ public class HistoryMajorService {
 	public List<HistoryMajor> findBySchool(School school) {
 		return historyMajorRepository.findBySchool(school);
 	}
+	public List<HistoryMajor> findBySchoolAndType(School school,Integer type,String year) {
+		return historyMajorRepository.findBySchoolAndTypeAndYear(school, type,year);
+	}
 	public List<HistoryMajor> findAll() {
 		return (List<HistoryMajor>)historyMajorRepository.findAll();
 	}

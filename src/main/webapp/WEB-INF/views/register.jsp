@@ -87,11 +87,10 @@
                     </select></p>
                   <p><label for="rt1-fax">毕业学校</label><input type="text"  name='user.school'></p>
                   <p><label for="rt1-country">密码*</label><input type="text"  name='user.password'></p>
-                  <p><label for="rt1-city">省份*</label> <select  name='user.area'>
-                      <option value="北京">北京</option>
-                      <option value="北京">上海</option>
-                        <option value="北京">江苏</option>
-                           <option value="北京">浙江</option>
+                  <p><label for="rt1-city">省份*</label> <select  name='user.area.code'>
+                     <c:forEach items="${areas}" var="bean">
+                     <option value='${bean.code }'>${bean.name }</option>
+                     </c:forEach>
                     </select></p>
                     <p><label for="rt1-city">城市*</label><input type="text"  name='user.city'></p>
                 

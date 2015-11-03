@@ -41,8 +41,9 @@ public class HistoryScoreService {
 				if (type != null) {
 					predicate.getExpressions().add(cb.equal(root.get("type").as(Integer.class), type));
 				}
-				predicate.getExpressions().add(cb.lessThanOrEqualTo(root.get("minOrder").as(Integer.class), orderbegain));
+				predicate.getExpressions().add(cb.greaterThan(root.get("minOrder").as(Integer.class), orderbegain));
 				//predicate.getExpressions().add(cb.lessThanOrEqualTo(root.get("minOrder").as(Integer.class), orderend));
+				predicate.getExpressions().add(cb.equal(root.get("year").as(String.class), "2014"));
 				
 				return predicate;
 			}

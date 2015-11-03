@@ -100,6 +100,10 @@ public class ScoreLineAction extends ActionSupport {
 		bean.setScore2(scoreLine.getScore2());
 		bean.setScore3(scoreLine.getScore3());
 		bean.setScore4(scoreLine.getScore4());
+		bean.setNum1(scoreLine.getNum1());
+		bean.setNum2(scoreLine.getNum2());
+		bean.setNum3(scoreLine.getNum3());
+		bean.setNum4(scoreLine.getNum4());
 		scoreLineService.save(bean);
 		resultMap.put("state", "success");
 		resultMap.put("msg", "修改成功");

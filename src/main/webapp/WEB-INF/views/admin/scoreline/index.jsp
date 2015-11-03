@@ -64,6 +64,10 @@
 											<th >本科第二批</th>
 											<th >本科第三批</th>
 											<th >专科</th>
+											<th >本科第一批最低排名</th>
+											<th >本科第二批最低排名</th>
+											<th >本科第三批最低排名</th>
+											<th >专科最低排名</th>
 											<th >操作</th>
 										</tr>
 									</thead>
@@ -134,7 +138,30 @@
 									<input type="text" id="score4" placeholder="">
 								</div>
 							</div>
-							
+							<div class="control-group" id='control_project'>
+								<label for="remark" class="control-label">本科一批分数线最低排名：</label>
+								<div class="controls">
+									<input type="text" id="num1" placeholder="">
+								</div>
+							</div>
+							<div class="control-group" id='control_project'>
+								<label for="remark" class="control-label">本科二批分数线最低排名：</label>
+								<div class="controls">
+									<input type="text" id="num2" placeholder="">
+								</div>
+							</div>
+							<div class="control-group" id='control_project'>
+								<label for="remark" class="control-label">本科三批分数线最低排名：</label>
+								<div class="controls">
+									<input type="text" id="num3" placeholder="">
+								</div>
+							</div>
+							<div class="control-group" id='control_project'>
+								<label for="remark" class="control-label">本科专批分数线排名：</label>
+								<div class="controls">
+									<input type="text" id="num4" placeholder="">
+								</div>
+							</div>
 							
 						</form>
 					</div>

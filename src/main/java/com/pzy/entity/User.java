@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 /***
  * 前台注册用户
@@ -28,7 +30,8 @@ public class User implements Serializable {
 	private String address;
 	private Date birthday;
 	private String sex;
-	private String area;
+	@ManyToOne(fetch = FetchType.EAGER)	
+	private Area area;
 	private String city;
 	private String cardid;
 	private String school;
@@ -74,11 +77,11 @@ public class User implements Serializable {
 		this.city = city;
 	}
 
-	public String getArea() {
+	public Area getArea() {
 		return area;
 	}
 
-	public void setArea(String area) {
+	public void setArea(Area area) {
 		this.area = area;
 	}
 

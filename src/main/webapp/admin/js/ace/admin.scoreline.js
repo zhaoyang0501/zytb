@@ -63,12 +63,20 @@ jQuery.adminScoreline = {
 						"mDataProp" : "score3"
 					}, {
 						"mDataProp" : "score4"
+					},{
+						"mDataProp" : "num1"
+					}, {
+						"mDataProp" : "num2"
+					}, {
+						"mDataProp" : "num3"
+					}, {
+						"mDataProp" : "num4"
 					}, {
 						"mDataProp" : ""
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [7],
+							'aTargets' : [11],
 							'fnRender' : function(oObj, sVal) {
 								return "<button class=\"btn2 btn-info\" onclick=\"$.adminScoreline.showEdit("+oObj.aData.id+")\"><i class=\"icon-pencil\"></i>修改</button>"+
 								 "  <button class=\"btn2 btn-info\" onclick=\"$.adminScoreline.deleteScoreline("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
@@ -124,6 +132,10 @@ jQuery.adminScoreline = {
 	    				"scoreLine.score2":$("#score2").val(),
 	    				"scoreLine.score3":$("#score3").val(),
 	    				"scoreLine.score4":$("#score4").val(),
+	    				"scoreLine.num1":$("#num1").val(),
+	    				"scoreLine.num2":$("#num2").val(),
+	    				"scoreLine.num3":$("#num3").val(),
+	    				"scoreLine.num4":$("#num4").val(),
 	    			},
 	    			dataType : "json",
 	    			success : function(json) {
@@ -147,6 +159,10 @@ jQuery.adminScoreline = {
 	    				"scoreLine.score2":$("#score2").val(),
 	    				"scoreLine.score3":$("#score3").val(),
 	    				"scoreLine.score4":$("#score4").val(),
+	    				"scoreLine.num1":$("#num1").val(),
+	    				"scoreLine.num2":$("#num2").val(),
+	    				"scoreLine.num3":$("#num3").val(),
+	    				"scoreLine.num4":$("#num4").val(),
 	    				"scoreLine.id":$("#scorelineId").val()
 	    			},
 	    			dataType : "json",

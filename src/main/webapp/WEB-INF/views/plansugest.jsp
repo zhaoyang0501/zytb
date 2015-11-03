@@ -93,27 +93,95 @@
 				 </tr>
 			</thead>
 			<tbody>
-			
-				<tr>
+			<c:if test="${type=1}">
+			<tr>
+					 	 <th>本科第一批</th>
+						<th><span class="label label-success">这个批次是你的成绩可以直接进入的批次，您可以直接报考，建议报考该批次中适合您发展的院校</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=1">查看推荐院校</a> </th>
+				 </tr>
+				 <tr>
+					 	 <th>本科第二批</th>
+						<th><span class="label label-default">根据您的排名，您应该进入上一个批次</span></th>
+						<th><a href="planschool?plan.id=${plan.id}&type=2">查看推荐院校</a> </th>
+				 </tr>
+				  <tr>
+					 	 <th>本科第三批</th>
+						<th><span class="label label-default">根据您的排名，您没有必要考虑这个批次</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=3">查看推荐院校</a> </th>
+				 </tr>
+				  <tr>
+					 	 <th>专科</th>
+						<th><span class="label label-default">根据您的排名，您没有必要考虑这个批次</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=4">查看推荐院校</a> </th>
+				 </tr>
+			</c:if>
+				
+			<c:if test="${type=2}">
+			<tr>
+					 	 <th>本科第一批</th>
+						<th><span class="label label-warning">根据您的排名，建议您选择该批次中竞争力比较弱的学校</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=1">查看推荐院校</a> </th>
+				 </tr>
+				 <tr>
+					 	 <th>本科第二批</th>
+						<th><span class="label label-success">这个批次是你的成绩可以直接进入的批次，您可以直接报考，建议报考该批次中适合您发展的院校</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=2">查看推荐院校</a> </th>
+				 </tr>
+				  <tr>
+					 	 <th>本科第三批</th>
+						<th><span class="label label-default">根据您的排名，您没有必要考虑这个批次</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=3">查看推荐院校</a> </th>
+				 </tr>
+				  <tr>
+					 	 <th>专科</th>
+						<th><span class="label label-default">根据您的排名，您没有必要考虑这个批次</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=4">查看推荐院校</a> </th>
+				 </tr>
+			</c:if>	
+				<c:if test="${type=3}">
+			<tr>
 					 	 <th>本科第一批</th>
 						<th><span class="label label-default">根据您的排名，您没有必要考虑这个批次</span></th>
-						<th><a href="planschool?plan.id=${bean.id }">查看推荐院校</a> </th>
+						<th><a href="planschool?plan.id=${plan.id }&type=1">查看推荐院校</a> </th>
 				 </tr>
 				 <tr>
 					 	 <th>本科第二批</th>
 						<th><span class="label label-warning">根据您的排名，建议您选择该批次中竞争力比较弱的学校</span></th>
-						<th><a href="planschool?plan.id=${bean.id }">查看推荐院校</a> </th>
+						<th><a href="planschool?plan.id=${plan.id }&type=2">查看推荐院校</a> </th>
 				 </tr>
 				  <tr>
 					 	 <th>本科第三批</th>
 						<th><span class="label label-success">这个批次是你的成绩可以直接进入的批次，您可以直接报考，建议报考该批次中适合您发展的院校</span></th>
-						<th><a href="planschool?plan.id=${bean.id }">查看推荐院校</a> </th>
+						<th><a href="planschool?plan.id=${plan.id }&type=3">查看推荐院校</a> </th>
 				 </tr>
 				  <tr>
 					 	 <th>专科</th>
-						<th><span class="label label-default">根据您的排名，您应该进入上一个批次</span></th>
-						<th><a href="planschool?plan.id=${bean.id}">查看推荐院校</a> </th>
+						<th><span class="label label-default">根据您的排名，您没有必要考虑这个批次</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=4">查看推荐院校</a> </th>
 				 </tr>
+			</c:if>	
+			<c:if test="${type=3}">
+			<tr>
+					 	 <th>本科第一批</th>
+						<th><span class="label label-default">根据您的排名，您没有必要考虑这个批次</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=1">查看推荐院校</a> </th>
+				 </tr>
+				 <tr>
+					 	 <th>本科第二批</th>
+						<th><span class="label label-default">根据您的排名，您没有必要考虑这个批次</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=2">查看推荐院校</a> </th>
+				 </tr>
+				  <tr>
+					 	 <th>本科第三批</th>
+						<th><span class="label label-warning">根据您的排名，建议您选择该批次中竞争力比较弱的学校</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=3">查看推荐院校</a> </th>
+				 </tr>
+				  <tr>
+					 	 <th>专科</th>
+						<th><span class="label label-success">这个批次是你的成绩可以直接进入的批次，您可以直接报考，建议报考该批次中适合您发展的院校</span></th>
+						<th><a href="planschool?plan.id=${plan.id }&type=4">查看推荐院校</a> </th>
+				 </tr>
+			</c:if>	
 			</tbody>
 			</table>
             </div>
