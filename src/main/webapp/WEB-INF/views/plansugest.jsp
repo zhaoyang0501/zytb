@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+ <%@include file="./validatelogin.jsp" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -82,7 +83,7 @@
               </nav>
             </div>	
             <div class="col-lg-9 col-md-9">
-            <h2 class="align-left" style="margin-top: 0px;">报考建议</h2>
+            <h2 class="align-left" style="margin-top: 0px;">报考建议${type}</h2>
             <div > 
             <table class="table table-bordered">
 			<thead>
@@ -93,7 +94,7 @@
 				 </tr>
 			</thead>
 			<tbody>
-			<c:if test="${type=1}">
+			<c:if test="${type==1}">
 			<tr>
 					 	 <th>本科第一批</th>
 						<th><span class="label label-success">这个批次是你的成绩可以直接进入的批次，您可以直接报考，建议报考该批次中适合您发展的院校</span></th>
@@ -116,7 +117,7 @@
 				 </tr>
 			</c:if>
 				
-			<c:if test="${type=2}">
+			<c:if test="${type==2}">
 			<tr>
 					 	 <th>本科第一批</th>
 						<th><span class="label label-warning">根据您的排名，建议您选择该批次中竞争力比较弱的学校</span></th>
@@ -138,7 +139,7 @@
 						<th><a href="planschool?plan.id=${plan.id }&type=4">查看推荐院校</a> </th>
 				 </tr>
 			</c:if>	
-				<c:if test="${type=3}">
+				<c:if test="${type==3}">
 			<tr>
 					 	 <th>本科第一批</th>
 						<th><span class="label label-default">根据您的排名，您没有必要考虑这个批次</span></th>
@@ -160,7 +161,7 @@
 						<th><a href="planschool?plan.id=${plan.id }&type=4">查看推荐院校</a> </th>
 				 </tr>
 			</c:if>	
-			<c:if test="${type=3}">
+			<c:if test="${type==4}">
 			<tr>
 					 	 <th>本科第一批</th>
 						<th><span class="label label-default">根据您的排名，您没有必要考虑这个批次</span></th>

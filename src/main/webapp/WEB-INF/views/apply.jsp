@@ -114,7 +114,7 @@
     </div>
     
 	<%@include file="./footer.jsp" %>
-    <jsp:include page="./footer.jsp"></jsp:include>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

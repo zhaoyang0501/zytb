@@ -67,15 +67,15 @@ jQuery.adminHistorymajor = {
 					}, {
 						"mDataProp" : "totalMan"
 					}, {
-						"mDataProp" : "minScore"
-					} ,{
 						"mDataProp" : "maxScore"
+					} ,{
+						"mDataProp" : "minScore"
 					}, {
 						"mDataProp" : "avgScore"
 					}, {
-						"mDataProp" : "minOrder"
-					} ,{
 						"mDataProp" : "maxOrder"
+					} ,{
+						"mDataProp" : "minOrder"
 					}, {
 						"mDataProp" : "avgOrder"
 					}, {

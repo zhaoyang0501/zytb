@@ -66,7 +66,7 @@
                 <a href="index.html">
                 <div class="envor-logo">
                   <img src="img/site-logo.png" alt="Envor Logo">
-                  <p class="logo" style="width: 230px;"></p>
+                  <p class="logo" style="width: 230px;">高考志愿填报</p>
                 <!--
 
                 Site Logo end
@@ -82,7 +82,7 @@
                 <nav>
                   <ul>
                     <li>
-                      <a href="plan">首页</a>
+                      <a href="news">首页</a>
                     </li>
                     <li>
                       <a href="plan">志愿方案</a>

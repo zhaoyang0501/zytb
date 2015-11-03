@@ -127,7 +127,7 @@
 							<div class="control-group">
 								<label for="name" class="control-label">招生专业：</label>
 								<div class="controls">
-									<select id='categoryid'>
+									<select id='category'>
 										<c:forEach items="${categorys}" var="bean">
 											<option value="${bean.id}">${bean.name }</option>
 										</c:forEach>
@@ -159,10 +159,10 @@
 								<label for="name" class="control-label">批次：</label>
 								<div class="controls">
 									<select id='type'>
-											<option value="10">本科一批</option>
-											<option value="20">本科二批</option>
-											<option value="30">本科三批</option>
-											<option value="30">专科</option>
+											<option value="1">本科一批</option>
+											<option value="2">本科二批</option>
+											<option value="3">本科三批</option>
+											<option value="3">专科</option>
 									</select>
 								</div>
 							</div>

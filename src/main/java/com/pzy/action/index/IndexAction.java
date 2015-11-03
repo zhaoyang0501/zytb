@@ -95,10 +95,13 @@ public class IndexAction extends ActionSupport {
 	 * @return
 	 * @throws Exception
 	 */
-	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/index.jsp") })
+	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/news.jsp") })
 	public String index() throws Exception {
+		this.newss=this.newsService.findAll();
 		return SUCCESS;
 	}
+	
+	
 	/***
 	 * 个人信息
 	 * @return
@@ -195,7 +198,7 @@ public class IndexAction extends ActionSupport {
 	 * @return
 	 * @throws Exception
 	 */
-	@Action(value = "addmyplan", results = { @Result(name = "success", location = "/WEB-INF/views/addmyplan.jsp") })
+	@Action(value = "addmyplan", results = { @Result(name = "success" ,type="redirect", location = "apply") })
 	public String addmyplan() throws Exception {
 		User user=(User)ActionContext.getContext().getSession().get("user");
 		myplan.setUser(user);
@@ -231,14 +234,23 @@ public class IndexAction extends ActionSupport {
 			return SUCCESS;
 		}
 			
-		if(newplan.getNum()<scoreline.getNum1())
+		if(newplan.getNum()<scoreline.getNum1()){
 			type=1;
-		if(newplan.getNum()<scoreline.getNum2())
+			return SUCCESS;
+		}
+			
+		if(newplan.getNum()<scoreline.getNum2()){
 			type=2;
-		if(newplan.getNum()<scoreline.getNum3())
+			return SUCCESS;
+		}
+		if(newplan.getNum()<scoreline.getNum3()){
 			type=3;
-		if(newplan.getNum()<scoreline.getNum4())
+			return SUCCESS;
+		}
+		if(newplan.getNum()<scoreline.getNum4()){
 			type=4;
+			return SUCCESS;
+		}
 		return SUCCESS;
 	}
 	/**创建方案*/
@@ -277,6 +289,15 @@ public class IndexAction extends ActionSupport {
 	    		this.tip="登陆失败 不存在此用户名或密码!";
 	    		return LOGIN;
 	    	}
+	    	
+	}
+	 @Action(value = "loginout", 
+	    		results = { @Result(name = "success" ,type="redirect", location = "index") ,
+	    					@Result(name = "login", location = "/WEB-INF/views/login.jsp") })  
+	 public String loginout() throws Exception { 
+		 ActionContext.getContext().getSession().clear();
+	     this.tip="成功退出!";
+	     return LOGIN;
 	    	
 	}
 	 /***

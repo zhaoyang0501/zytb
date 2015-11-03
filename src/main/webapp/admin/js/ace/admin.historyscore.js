@@ -62,6 +62,8 @@ jQuery.adminHistoryscore = {
 						"mDataProp" : "year"
 					}, {
 						"mDataProp" : "area.name"
+					},{
+						"mDataProp" : "type"
 					}, {
 						"mDataProp" : "totalMan"
 					}, {
@@ -80,8 +82,21 @@ jQuery.adminHistoryscore = {
 						"mDataProp" : ""
 					}],
 					"aoColumnDefs" : [
+{
+	'aTargets' : [3],
+	'fnRender' : function(oObj, sVal) {
+		if(sVal=='1')
+			return "本科一批";
+		else if(sVal=='2')
+			return "本科第二批";
+		else if(sVal=='3')
+			return "本科第三批";
+		else if(sVal=='4')
+			return "专批";
+	}
+},
 						{
-							'aTargets' : [10],
+							'aTargets' : [11],
 							'fnRender' : function(oObj, sVal) {
 								return "  <button class=\"btn2 btn-info\" onclick=\"$.adminHistoryscore.deleteHistoryscore("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
 							}
