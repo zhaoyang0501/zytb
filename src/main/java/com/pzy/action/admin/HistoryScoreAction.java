@@ -21,7 +21,7 @@ import com.pzy.service.HistoryScoreService;
 import com.pzy.service.SchoolService;
 
 /***
- * 后台分类管理 http://127.0.0.1:8080/tuangou/admin/historyscore/index
+ * @author 263608237@qq.com
  *
  */
 @Namespace("/admin/historyscore")

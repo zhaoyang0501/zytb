@@ -3,7 +3,6 @@ package com.pzy.action.admin;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -15,7 +14,10 @@ import org.springframework.data.domain.Page;
 import com.pzy.action.PageAction;
 import com.pzy.entity.News;
 import com.pzy.service.NewsService;
-
+/***
+ * @author 263608237@qq.com
+ *
+ */
 @Namespace("/admin/news")
 @ParentPackage("json-default") 
 public class NewsAction extends PageAction {

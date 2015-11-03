@@ -31,7 +31,11 @@ import com.pzy.service.PlanService;
 import com.pzy.service.SchoolService;
 import com.pzy.service.ScoreLineService;
 import com.pzy.service.UserService;
-
+/***
+ * 前台
+ * @author 263608237@qq.com
+ *
+ */
 @SuppressWarnings("serial")
 @ParentPackage("struts-default")
 @Namespace("/")

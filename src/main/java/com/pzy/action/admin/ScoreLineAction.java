@@ -1,6 +1,5 @@
 package com.pzy.action.admin;
 
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +19,7 @@ import com.pzy.service.AreaService;
 import com.pzy.service.ScoreLineService;
 
 /***
- * 后台分类管理 http://127.0.0.1:8080/tuangou/admin/scoreLine/index
+ * @author 263608237@qq.com
  *
  */
 @Namespace("/admin/scoreline")

@@ -14,7 +14,10 @@ import org.springframework.data.domain.Page;
 import com.opensymphony.xwork2.ActionSupport;
 import com.pzy.entity.User;
 import com.pzy.service.UserService;
-
+/***
+ * @author 263608237@qq.com
+ *
+ */
 @Namespace("/admin/user")
 @ParentPackage("json-default")  
 public class UserAction  extends ActionSupport{

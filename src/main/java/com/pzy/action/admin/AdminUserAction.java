@@ -16,9 +16,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.pzy.entity.AdminUser;
 import com.pzy.service.AdminUserService;
 /***
- * 对于权限管理
- * http://127.0.0.1:8080/tuangou/admin/adminuser/index
- * @author 
+ * @author 263608237@qq.com
+ * 
  *
  */
 @Namespace("/admin/adminuser")

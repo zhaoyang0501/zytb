@@ -50,4 +50,5 @@ public class PageAction extends ActionSupport {
 	public void setIDisplayLength(Integer iDisplayLength) {
 		this.iDisplayLength = iDisplayLength;
 	}
+
 }
