@@ -70,15 +70,15 @@
               <div class="envor-widget-inner">
                 <p>
                   <i class="fa fa-map-marker"></i>
-                  121 King Street, Melbourne  Victoria 3000, Australia
+                 		黑龙江省哈尔滨市呼兰区学院路288号
                 </p>
                 <p>
                   <i class="fa fa-phone"></i>
-                  731-509-5843
+               		  电话：0451—88128600
                 </p>
                 <p>
                   <i class="fa fa-envelope"></i>
-                  <a href="">263608237@qq.com</a>
+                  <a href="">hithdzhaoshengban@126.com </a>
                 </p>
               </div>
             </div>
@@ -96,8 +96,7 @@
           <div class="col-lg-12">
             <div class="envor-widget envor-copyright-widget">
               <div class="envor-widget-inner">
-                <p>© Copyright 2013 by <a href="">envor</a>. All Rights Reserved.</p>
-                <p><a href="">home</a> / <a href="">faq</a> / <a href="">contacts</a></p>
+                <p>© Copyright 2015 by <a href="">envor</a>. All Rights Reserved.</p>
               </div>
             </div>
           <!--

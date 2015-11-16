@@ -28,8 +28,8 @@
               Contact information start
 
               //-->
-              <p class="contacts"><i class="fa fa-phone"></i> 0451-88128600 </p>
-              <p class="contacts"><i class="fa fa-envelope"></i> <a href="">263608237@qq.com</a></p>
+              <p class="contacts"><i class="fa fa-phone"></i> 0451—88128600</p>
+              <p class="contacts"><i class="fa fa-envelope"></i> <a href="">hithdzhaoshengban@126.com </a></p>
               <ul class="social-btns">
                   <c:if test="${sessionScope.user!=null}">
                     <li style=" width: 250px;"><a href="">欢迎您：${sessionScope.user.nickname }</a></li>
